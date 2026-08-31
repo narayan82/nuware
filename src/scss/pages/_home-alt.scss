@@ -1,0 +1,1088 @@
+// BEM convention: block `.particle-hero`, element `.particle-hero__canvas`, modifier `.particle-hero--ready`.
+@use '../base/variables' as *;
+
+.particle-hero {
+  --particle-hero-lift: clamp(80px, 10vh, 140px);
+  --particle-hero-background: #f4f7fb;
+  --particle-hero-text: #172033;
+  --particle-hero-muted: rgb(23 32 51 / 72%);
+  --particle-hero-field: #ffffff;
+  --particle-hero-field-border: rgb(23 32 51 / 14%);
+  --particle-hero-placeholder: rgb(23 32 51 / 52%);
+  --particle-hero-focus: #df1e26;
+  --particle-zero-color: #101828;
+  --particle-one-color: #9aa3b1;
+
+  position: relative;
+  height: calc(100svh - 221px);
+  padding: clamp(48px, 7vw, 100px);
+  overflow: hidden;
+  background: var(--particle-hero-background);
+  color: var(--particle-hero-text);
+  padding-top:40px;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.theme-dark .particle-hero {
+  --particle-hero-background: #111318;
+  --particle-hero-text: #f7f8fb;
+  --particle-hero-muted: rgb(247 248 251 / 76%);
+  --particle-hero-field: rgb(255 255 255 / 8%);
+  --particle-hero-field-border: rgb(255 255 255 / 14%);
+  --particle-hero-placeholder: rgb(255 255 255 / 52%);
+  --particle-hero-focus: #ffffff;
+  --particle-zero-color: #ffffff;
+  --particle-one-color: #7d8796;
+  border-bottom-color: rgb(255 255 255 / 14%);
+}
+
+.particle-hero__text,
+.particle-hero__content {
+  position: relative;
+  z-index: 1;
+  top: calc(-1 * var(--particle-hero-lift));
+}
+
+.particle-hero__text {
+  width: 100%;
+  height: clamp(280px, 38vw, 500px);
+}
+
+.particle-hero__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle-hero__sr,
+.particle-hero__label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap;
+}
+
+.particle-hero__content {
+  display: flex;
+  width: min(100%, 760px);
+  margin-top: calc(40px - var(--particle-hero-baseline-tail, 0px));
+  margin-inline: auto;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.particle-hero--ready .particle-hero__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.particle-hero__subtitle {
+  font-family: "Geist", var(--font-family-base);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 200;
+  line-height: 1;
+}
+
+.particle-hero__description {
+  max-width: 700px;
+  color: var(--particle-hero-muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.particle-hero__prompt {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.particle-hero__question {
+  font-weight: 700;
+}
+
+.particle-hero__form {
+  display: flex;
+  width: min(100%, 500px);
+  height: 56px;
+  padding: 0 10px 0 20px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--particle-hero-field-border);
+  border-radius: 28px;
+  background: var(--particle-hero-field);
+}
+
+.particle-hero__input {
+  min-width: 0;
+  padding: 0;
+  flex: 1 1 auto;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--particle-hero-text);
+  font: inherit;
+}
+
+.particle-hero__input::placeholder {
+  color: var(--particle-hero-placeholder);
+}
+
+.particle-hero__submit {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 16px;
+  background: #df1e26;
+  cursor: pointer;
+}
+
+.particle-hero__submit img {
+  width: 18px;
+  height: 18px;
+}
+
+.particle-hero__form:focus-within {
+  border-color: var(--particle-hero-focus);
+}
+
+.particle-hero__submit:focus-visible {
+  outline: 2px solid var(--particle-hero-focus);
+  outline-offset: 3px;
+}
+
+@media (max-width: ($breakpoint-md - 0.01rem)) {
+  .particle-hero {
+    --particle-hero-lift: 32px;
+
+    height: auto;
+    padding: 40px 20px 24px;
+  }
+
+  .particle-hero__text {
+    height: clamp(220px, 58vw, 340px);
+  }
+
+  .particle-hero__description {
+    font-size: 15px;
+  }
+
+  .particle-hero__content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+// BEM convention: block `.our-worlds`, element `.our-worlds__card`, modifier reserved for future variants.
+.our-worlds {
+  position: relative;
+  padding: 50px clamp(40px, 7.8vw, 100px) 65px;
+  overflow: hidden;
+  background: #ffffff url("../images/our-worlds-background.png") center / cover no-repeat;
+  color: #000000;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.our-worlds__inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1220px);
+  margin-inline: auto;
+}
+
+.our-worlds__header {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.our-worlds__title,
+.our-worlds__intro,
+.our-worlds__card-title,
+.our-worlds__description {
+  margin: 0;
+}
+
+.our-worlds__title {
+  font-family: "Geist", var(--font-family-base);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.our-worlds__title span {
+  color: #df1e26;
+}
+
+.our-worlds__intro {
+  max-width: 1040px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.our-worlds__grid {
+  display: flex;
+  margin-top: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-worlds__card {
+  position: relative;
+  width: 34%;
+  flex: 0 0 34%;
+  aspect-ratio: 1 / 1;
+}
+
+// Desktop-only staggered opacity reveal; no movement or layout changes.
+@media (min-width: 64rem) and (prefers-reduced-motion: no-preference) {
+  .our-worlds--reveal-ready {
+    .our-worlds__card { opacity: 0; }
+
+    &.our-worlds--revealed .our-worlds__card {
+      opacity: 1;
+      transition: opacity 1000ms ease var(--world-reveal-delay, 0ms);
+    }
+
+    .our-worlds__card:focus-within { opacity: 1; transition: none; }
+  }
+}
+
+.our-worlds__card + .our-worlds__card {
+  margin-left: -8%;
+}
+
+.our-worlds__card:nth-child(1),
+.our-worlds__card:nth-child(3) {
+  z-index: 2;
+}
+
+.our-worlds__card:nth-child(2),
+.our-worlds__card:nth-child(4) {
+  z-index: 1;
+}
+
+.our-worlds__visual {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+}
+
+.our-worlds__network {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+}
+
+.our-worlds__icon {
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  width: 25%;
+  height: 25%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transform: translateX(-50%);
+}
+
+.our-worlds__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 68%;
+  height: 100%;
+  margin-inline: auto;
+  padding: 45% 0 12%;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+
+.our-worlds__card-title {
+  font-family: "Geist", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.our-worlds__description {
+  font-size: 14px;
+  line-height: 1.2;
+  max-width: 80%;
+}
+
+.our-worlds__link {
+  display: grid;
+  min-width: 36px;
+  min-height: 36px;
+  margin-top: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #000000;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.our-worlds__link:hover,
+.our-worlds__link:focus-visible {
+  background: #df1e26;
+}
+
+.our-worlds__link:focus-visible {
+  outline: 2px solid #df1e26;
+  outline-offset: 3px;
+}
+
+.our-worlds__carousel-controls {
+  display: none;
+}
+
+@media (max-width: ($breakpoint-md - 0.01rem)) {
+  .our-worlds {
+    padding: 48px 20px 64px;
+    background-size: auto 100%;
+  }
+
+  .our-worlds__title {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+
+  .our-worlds__intro {
+    line-height: 1.4;
+  }
+
+  .our-worlds__grid {
+    --world-offset: 0px;
+
+    display: flex;
+    width: 100%;
+    margin: 40px auto 0;
+    align-items: center;
+    justify-content: flex-start;
+    transform: translateX(calc(0px - var(--world-offset)));
+    transition: transform 450ms ease;
+  }
+
+  .our-worlds__card {
+    width: 100%;
+    flex: 0 0 100%;
+    aspect-ratio: 1 / 1;
+    opacity: 0.38;
+    pointer-events: none;
+    transition: opacity 300ms ease;
+  }
+
+  .our-worlds__card + .our-worlds__card {
+    margin-left: 0;
+  }
+
+  .our-worlds__card:not(:last-child) {
+    margin-right: calc(-8% - 20px);
+  }
+
+  .our-worlds__card--active {
+    z-index: 2;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .our-worlds__card--previous,
+  .our-worlds__card--next {
+    z-index: 1;
+    opacity: 0.55;
+  }
+
+  .our-worlds__card--previous .our-worlds__content,
+  .our-worlds__card--next .our-worlds__content {
+    opacity: 0;
+  }
+
+  .our-worlds__content {
+    width: 100%;
+    padding-top: 49%;
+  }
+
+  .our-worlds__carousel-controls {
+    display: flex;
+    margin-top: 24px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .our-worlds__carousel-button {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid #18181b;
+    border-radius: 16px;
+    background: #ffffff;
+    color: #18181b;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .our-worlds__carousel-button:hover,
+  .our-worlds__carousel-button:focus-visible {
+    background: #18181b;
+    color: #ffffff;
+  }
+
+  .our-worlds__carousel-button:focus-visible {
+    outline: 2px solid #df1e26;
+    outline-offset: 3px;
+  }
+
+  .our-worlds__pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .our-worlds__pagination-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b4b4b4;
+    transition: width 200ms ease, background-color 200ms ease;
+  }
+
+  .our-worlds__pagination-dot--active {
+    width: 20px;
+    border-radius: 4px;
+    background: #18181b;
+  }
+}
+
+// BEM convention: block `.stat-counter`, element `.stat-counter__value`, modifier `.stat-counter--changing`.
+.stat-counter {
+  display: flex;
+  padding: 80px 20px;
+  align-items: center;
+  justify-content: center;
+  background: #f4f7fb;
+  color: #18181b;
+  outline: 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.stat-counter:focus-visible {
+  box-shadow: inset 0 0 0 2px #df1e26;
+}
+
+.stat-counter__row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.stat-counter__button {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  flex: 0 0 48px;
+  place-items: center;
+  border: 1px solid #d4d4d8;
+  border-radius: 16px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.stat-counter__button img {
+  width: 20px;
+  height: 20px;
+}
+
+.stat-counter__button:hover,
+.stat-counter__button:focus-visible {
+  border-color: #18181b;
+}
+
+.stat-counter__button:focus-visible {
+  outline: 2px solid #df1e26;
+  outline-offset: 3px;
+}
+
+.stat-counter__stat {
+  display: flex;
+  width: min(400px, 100%);
+  min-width: 0;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.stat-counter__number,
+.stat-counter__description {
+  margin: 0;
+}
+
+.stat-counter__number {
+  font-family: "Geist", sans-serif;
+  font-size: clamp(72px, 7.8vw, 100px);
+  font-weight: 200;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.stat-counter__suffix,
+.stat-counter__description {
+  transition: opacity 180ms ease;
+}
+
+.stat-counter__description {
+  color: #71717a;
+  font-size: clamp(18px, 1.88vw, 24px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.stat-counter__link {
+  display: inline-flex;
+  min-height: 48px;
+  margin-top: 16px;
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #18181b;
+  border-radius: 16px;
+  background: transparent;
+  color: #18181b;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.stat-counter__link:hover,
+.stat-counter__link:focus-visible {
+  background: #18181b;
+  color: #ffffff;
+}
+
+.stat-counter__link:focus-visible {
+  outline: 2px solid #df1e26;
+  outline-offset: 3px;
+}
+
+.stat-counter--changing .stat-counter__suffix,
+.stat-counter--changing .stat-counter__description {
+  opacity: 0;
+}
+
+@media (max-width: ($breakpoint-md - 0.01rem)) {
+
+  .our-worlds__icon {
+    width: 28%;
+    height: 28%;
+  }
+  .stat-counter {
+    min-height: 180px;
+    padding: 64px 20px;
+  }
+
+  .stat-counter__number {
+    font-size:62px;
+  }
+
+  .stat-counter__row {
+    gap: clamp(12px, 5vw, 28px);
+  }
+
+  .stat-counter__button {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+}
+
+// Dark variants follow the existing theme toggle without altering the light layouts.
+.theme-dark .stat-counter {
+  background: #000000;
+  color: #f7f8fb;
+  border-color: rgb(255 255 255 / 14%);
+
+  &__description {
+    color: #b3bbc7;
+  }
+
+  &__button {
+    border-color: #626b79;
+    background: #232730;
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+
+    &:hover,
+    &:focus-visible {
+      border-color: #f7f8fb;
+      background: #343a46;
+    }
+  }
+
+  &__link {
+    border-color: #f7f8fb;
+    color: #f7f8fb;
+
+    &:hover,
+    &:focus-visible {
+      background: #f7f8fb;
+      color: #17191e;
+    }
+  }
+}
+
+.theme-dark .our-worlds {
+  background: #111318;
+  color: #f7f8fb;
+  border-color: rgb(255 255 255 / 14%);
+  isolation: isolate;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    background: url("../images/our-worlds-background.png") center / cover no-repeat;
+    filter: grayscale(1) invert(1);
+    mix-blend-mode: screen;
+    opacity: 0.35;
+    pointer-events: none;
+    content: "";
+  }
+
+  &__intro,
+  &__description {
+    color: #c8ced8;
+  }
+
+  // Adapt only the sphere; preserve the original ACF icon artwork.
+  &__visual {
+    mix-blend-mode: normal;
+  }
+
+  &__network {
+    filter: grayscale(1) invert(1);
+    mix-blend-mode: screen;
+  }
+
+  &__icon {
+    mix-blend-mode: normal;
+  }
+
+  &__link {
+    background: #f7f8fb;
+    color: #111318;
+
+    &:hover,
+    &:focus-visible {
+      background: #df1e26;
+      color: #ffffff;
+    }
+  }
+
+  &__carousel-button {
+    border-color: #788291;
+    background: #232730;
+    color: #f7f8fb;
+
+    &:hover,
+    &:focus-visible {
+      background: #f7f8fb;
+      color: #111318;
+    }
+  }
+
+  &__pagination-dot {
+    background: #788291;
+  }
+
+  &__pagination-dot--active {
+    background: #f7f8fb;
+  }
+}
+
+@media (max-width: ($breakpoint-md - 0.01rem)) {
+  .theme-dark .our-worlds::before {
+    background-size: auto 100%;
+  }
+}
+
+.careers-cta {
+  --careers-cta-background: #fdfdfd;
+  --careers-cta-text: #353535;
+  --careers-cta-button-background: #2c2c2c;
+  --careers-cta-button-text: #fdfdfd;
+
+  position: relative;
+  z-index: 2;
+  display: grid;
+  padding: 80px clamp(40px, 6.95vw, 100px);
+  grid-template-columns: 258px minmax(0, 814px);
+  align-items: stretch;
+  justify-content: center;
+  gap: 40px;
+  background: var(--careers-cta-background);
+  color: var(--careers-cta-text);
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.theme-dark .careers-cta {
+  --careers-cta-background: #17191e;
+  --careers-cta-text: #f7f8fb;
+  --careers-cta-button-background: #f7f8fb;
+  --careers-cta-button-text: #17191e;
+  border-bottom-color: rgb(255 255 255 / 14%);
+}
+
+.careers-cta__media {
+  min-height: 258px;
+  overflow: hidden;
+}
+
+.careers-cta__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.careers-cta__content {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.careers-cta__title {
+  margin: 0;
+  font-family: "Geist", var(--font-family-base);
+  font-size: clamp(44px, 4.3vw, 62px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.careers-cta__title-accent {
+  color: #df1e26;
+}
+
+.careers-cta__description {
+  max-width: 814px;
+  margin: 0;
+  font-family: "Geist", var(--font-family-base);
+  font-size: clamp(18px, 1.67vw, 24px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.careers-cta__link {
+  display: inline-flex;
+  min-height: 56px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  background: var(--careers-cta-button-background);
+  color: var(--careers-cta-button-text);
+  font-family: "Geist", var(--font-family-base);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  border-radius: 16px;
+}
+
+.careers-cta__link:hover,
+.careers-cta__link:focus-visible {
+  background: #df1e26;
+  color: #ffffff;
+}
+
+.careers-cta__link:focus-visible {
+  outline: 2px solid #df1e26;
+  outline-offset: 3px;
+}
+
+@media (max-width: ($breakpoint-md - 0.01rem)) {
+  .careers-cta {
+    padding: 20px 20px 20px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .careers-cta__media {
+    order: 2;
+    width: min(100%, 520px);
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .careers-cta__content {
+    display: contents;
+  }
+
+  .careers-cta__title {
+    order: 1;
+    font-size: clamp(40px, 12vw, 56px);
+
+    br {
+      display: none;
+    }
+  }
+
+  .careers-cta__description {
+    order: 3;
+  }
+
+  .careers-cta__link {
+    order: 4;
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle-hero__content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.ai-carousel {
+  --ai-carousel-background: #ffffff;
+  --ai-carousel-text: #000000;
+  --ai-carousel-border: #e2e2e2;
+  --ai-carousel-dot: #d9d9d9;
+  --ai-carousel-dot-active: #2f2f2f;
+
+  position: relative;
+  min-height: 600px;
+  padding: 46px clamp(40px, 8.13vw, 104px) 60px;
+  overflow: hidden;
+  background-color: var(--ai-carousel-background);
+  color: var(--ai-carousel-text);
+  border-bottom: 1px solid var(--ai-carousel-border);
+  isolation: isolate;
+}
+
+.theme-dark .ai-carousel {
+  --ai-carousel-background: #111318;
+  --ai-carousel-text: #f7f8fb;
+  --ai-carousel-border: rgb(255 255 255 / 14%);
+  --ai-carousel-dot: #555b66;
+  --ai-carousel-dot-active: #f7f8fb;
+}
+
+.ai-carousel__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+
+  canvas { display: block; width: 100%; height: 100%; }
+}
+
+.ai-carousel__globe-space { display: none; }
+
+.ai-carousel__inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1072px);
+  margin-inline: auto;
+}
+
+.ai-carousel__intro {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ai-carousel__eyebrow,
+.ai-carousel__summary,
+.ai-carousel__title,
+.ai-carousel__description {
+  margin: 0;
+}
+
+.ai-carousel__eyebrow {
+  font-family: "Geist", var(--font-family-base);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.ai-carousel__summary {
+  max-width: 770px;
+  font-family: "Geist", var(--font-family-base);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.ai-carousel__body {
+  width: min(100%, 450px);
+  margin-top: 56px;
+}
+
+.ai-carousel__controls {
+  display: flex;
+  height: 6px;
+  align-items: center;
+  gap: 11px;
+}
+
+.ai-carousel__dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 1px solid var(--ai-carousel-text);
+  border-radius: 16px;
+  background: var(--ai-carousel-dot);
+  cursor: pointer;
+}
+
+.ai-carousel__dot--active {
+  width: 18px;
+  border-color: var(--ai-carousel-dot-active);
+  background: var(--ai-carousel-dot-active);
+}
+
+.ai-carousel__dot:focus-visible {
+  outline: 2px solid #df1e26;
+  outline-offset: 4px;
+}
+
+.ai-carousel__slides {
+  // Stack slides in one grid cell so the tallest slide always reserves its space.
+  display: grid;
+  margin-top: 30px;
+}
+
+.ai-carousel__slide {
+  grid-area: 1 / 1;
+  align-self: start;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.ai-carousel__slide[hidden] {
+  display: flex;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ai-carousel__title {
+  color: #df1e26;
+  font-family: "Geist", var(--font-family-base);
+  font-size: clamp(36px, 3.44vw, 44px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ai-carousel__description {
+  font-family: "Geist", var(--font-family-base);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.ai-carousel__link {
+  display: inline-flex;
+  min-height: 53px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #df1e26;
+  border-radius: 16px;
+  background: #df1e26;
+  color: #ffffff;
+  font-family: "Geist", var(--font-family-base);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ai-carousel__link:hover,
+.ai-carousel__link:focus-visible {
+  border-color: #b71820;
+  background: #b71820;
+  color: #ffffff;
+}
+
+.ai-carousel__link:focus-visible {
+  outline: 2px solid #df1e26;
+  outline-offset: 3px;
+}
+
+.ai-carousel__link--outline {
+  gap: 10px;
+  background: var(--ai-carousel-background);
+  color: #df1e26;
+
+  &:hover,
+  &:focus-visible {
+    border-color: #df1e26;
+    background: var(--ai-carousel-background);
+    color: #df1e26;
+  }
+}
+
+@media (max-width: ($breakpoint-md - 0.01rem)) {
+  .ai-carousel {
+    min-height: 620px;
+    padding: 48px 20px 64px;
+  }
+
+  .ai-carousel__body {
+    margin-top: 0;
+  }
+
+  .ai-carousel__globe-space {
+    display: block;
+    height: clamp(240px, 60vw, 360px);
+  }
+
+  .ai-carousel__title {
+    font-size: clamp(36px, 11vw, 44px);
+  }
+}

@@ -1,0 +1,5 @@
+// BEM convention: block `.hero`, element `.hero__title`, modifier `.hero--dark`.
+.container {
+  width: min(calc(100% - (2 * var(--space-md))), 75rem);
+  margin-inline: auto;
+}

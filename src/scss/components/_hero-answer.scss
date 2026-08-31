@@ -1,0 +1,104 @@
+// BEM: `.hero-answer` block and `__` elements; `--open` controls the drawer.
+.hero-answer {
+  --answer-bg: #ffffff;
+  --answer-text: #172033;
+  --answer-muted: #626b79;
+  --answer-border: #e2e2e2;
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(400px, 100vw);
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--answer-border);
+  background: var(--answer-bg);
+  color: var(--answer-text);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: translateX(100%);
+  transition: transform 300ms ease;
+
+  &::backdrop {
+    background: rgb(0 0 0 / 45%);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+
+  &--open {
+    transform: translateX(0);
+    &::backdrop { opacity: 1; }
+  }
+
+  &__inner {
+    display: flex;
+    height: 100%;
+    padding: 80px 28px max(32px, env(safe-area-inset-bottom));
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__content { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    place-items: center;
+    border: 0;
+    border-radius: 16px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  &__title { margin: 0 0 24px; font-size: 26px; line-height: 1.2; }
+  &__question { margin: 0 0 20px; font-size: 18px; font-weight: 600; overflow-wrap: anywhere; }
+  &__notice { margin: 0 0 12px; font-size: 13px; color: var(--answer-muted); }
+  &__text { margin: 0; font-size: 16px; line-height: 1.65; }
+  &__invitation { margin-top: auto; flex-shrink: 0; }
+  &__invitation-title { margin: 0 0 18px; color: #df1e26; font-size: 44px; line-height: 1.1; }
+  &__tagline { margin: 0 0 28px; font-size: 24px; font-weight: 600; line-height: 1.35; }
+
+  &__cta {
+    display: inline-flex;
+    padding: 16px 20px;
+    align-items: center;
+    gap: 16px;
+    border-radius: 16px;
+    background: var(--answer-text);
+    color: var(--answer-bg);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__close:focus-visible,
+  &__cta:focus-visible { outline: 2px solid #df1e26; outline-offset: 3px; }
+}
+
+.theme-dark .hero-answer {
+  --answer-bg: #080c14;
+  --answer-text: #f7f8fb;
+  --answer-muted: #b3bbc7;
+  --answer-border: rgb(255 255 255 / 14%);
+}
+
+html.hero-answer-open { overflow: hidden; }
+
+@media (max-width: 47.99rem) {
+  .hero-answer { width: 100vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-answer,
+  .hero-answer::backdrop { transition: none; }
+}

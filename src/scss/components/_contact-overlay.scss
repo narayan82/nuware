@@ -1,0 +1,141 @@
+// BEM: contact-overlay block, __elements and --open state.
+.contact-overlay {
+  --contact-bg: #ffffff;
+  --contact-text: #172033;
+  --contact-border: #e2e2e2;
+  --contact-field: #f5f7fa;
+  --contact-muted: #626b79;
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(560px, 100vw);
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--contact-border);
+  background: var(--contact-bg);
+  color: var(--contact-text);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: translateX(100%);
+  transition: transform 300ms ease;
+
+  &::backdrop { background: rgb(0 0 0 / 45%); opacity: 0; transition: opacity 300ms ease; }
+  &--open { transform: translateX(0); }
+  &--open::backdrop { opacity: 1; }
+  &__inner { padding: 20px 28px max(32px, env(safe-area-inset-bottom)); }
+  &__header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+  &__title { margin: 0; font-size: 32px; line-height: 1.2; }
+
+  &__close {
+    flex: 0 0 44px;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    place-items: center;
+    border: 0;
+    border-radius: 16px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  &__close:focus-visible { outline: 2px solid #df1e26; outline-offset: 3px; }
+
+  // Keep Gravity Forms responsible for its field layout and validation.
+  .gform_wrapper .gform_fields { row-gap: 24px; }
+
+  // Keep the Name group accessible without a visible duplicate heading.
+  .gform_wrapper .gfield--type-name > legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .gform_wrapper .gfield_checkbox {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 20px;
+  }
+
+  .gform_wrapper .gfield_checkbox .gchoice { min-width: 0; align-items: start; }
+  .gform_wrapper .gfield_checkbox label { white-space: normal; overflow-wrap: anywhere; }
+
+  .gform_wrapper {
+    --gf-color-primary: #df1e26;
+    --gf-color-primary-contrast: #ffffff;
+    --gf-color-in-ctrl-primary: var(--contact-text);
+    --gf-color-in-ctrl: var(--contact-field);
+    --gf-color-in-ctrl-contrast: var(--contact-text);
+    --gf-color-out-ctrl: var(--contact-bg);
+    --gf-color-out-ctrl-contrast: var(--contact-text);
+    --gf-color-out-ctrl-light: var(--contact-muted);
+    color: var(--contact-text);
+  }
+
+  .gform_wrapper input:not([type='checkbox'], [type='radio'], [type='submit'], [type='button'], [type='hidden'], [type='file']),
+  .gform_wrapper select,
+  .gform_wrapper textarea {
+    background-color: var(--contact-field);
+    color: var(--contact-text);
+    border-color: var(--contact-border);
+  }
+
+  .gform_wrapper .gfield_label,
+  .gform_wrapper label,
+  .gform_wrapper legend,
+  .gform_confirmation_message {
+    color: var(--contact-text);
+  }
+
+  .gform_wrapper .gfield_description,
+  .gform_wrapper .gform_description,
+  .gform_wrapper .gform-field-label--type-sub {
+    color: var(--contact-muted);
+  }
+
+  .gform_wrapper input::placeholder,
+  .gform_wrapper textarea::placeholder { color: var(--contact-muted); opacity: 1; }
+
+  .gform_wrapper .gform_footer .gform_button {
+    width: 100%;
+    max-width: none;
+    flex: 1 1 100%;
+    height: 64px;
+  }
+
+  .gform_wrapper .gform_button,
+  .gform_wrapper .gform_next_button,
+  .gform_wrapper .gform_previous_button {
+    border-radius: 16px;
+  }
+}
+
+.theme-dark .contact-overlay {
+  --contact-bg: #080c14;
+  --contact-text: #f7f8fb;
+  --contact-border: rgb(255 255 255 / 14%);
+  --contact-field: #232730;
+  --contact-muted: #b3bbc7;
+}
+
+html.contact-overlay-open { overflow: hidden; }
+
+@media (max-width: 47.99rem) {
+  .contact-overlay { width: 100vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-overlay,
+  .contact-overlay::backdrop { transition: none; }
+}

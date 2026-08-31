@@ -1,0 +1,29 @@
+// BEM convention: block `.hero`, element `.hero__title`, modifier `.hero--dark`.
+:root {
+  // Spacing
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  // Typography
+  --font-family-base: system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", sans-serif;
+  --font-size-base: 1rem;
+  --line-height-base: 1.5;
+
+  // NuWare colours
+  --color-primary: #1457d9;
+  --color-secondary: #0d2748;
+  --color-accent: #36c5a3;
+  --color-text: #172033;
+  --color-background: #ffffff;
+  --color-surface: #f4f7fb;
+}
+
+// Breakpoints for use in media queries.
+$breakpoint-sm: 36rem;
+$breakpoint-md: 48rem;
+$breakpoint-lg: 64rem;
+$breakpoint-xl: 80rem;
+

@@ -1,0 +1,9 @@
+// BEM convention: block `.hero`, element `.hero__title`, modifier `.hero--dark`.
+body {
+  color: var(--color-text);
+  background: var(--color-background);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
