@@ -1,0 +1,791 @@
+[
+  {
+    "source": "ai-data-sciences-nl.pdf",
+    "title": "Accelerating Financial Data Research with NLP-Driven Data Extraction and Structuring",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 10,
+      "ol": 8,
+      "ul": 22,
+      "table": 2
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "ai-data-sciences-nl",
+    "post_status": "publish"
+  },
+  {
+    "source": "ai-scaling-agentic-solutions.pdf",
+    "title": "Scaling Agentic Solutions for Portfolio Management Workflows",
+    "counts": {
+      "h2": 6,
+      "p": 16,
+      "ol": 3,
+      "ul": 21,
+      "h3": 4,
+      "table": 2
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "ai-scaling-agentic-solutions",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-ab-salesforce.pdf",
+    "title": "Salesforce Integration and Data Migration for Unified CRM Intelligence",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 11,
+      "ol": 4,
+      "ul": 28
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-ab-salesforce",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-crm.pdf",
+    "title": "Transforming Enterprise CRM Operations through Data Integration and Salesforce Migration",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 11,
+      "ol": 4,
+      "ul": 25,
+      "table": 1
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-crm",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-cs-assurance.pdf",
+    "title": "Reinventing QA to Deliver Faster, Better, and More Reliable Digital Products",
+    "counts": {
+      "h2": 8,
+      "p": 12,
+      "ul": 16,
+      "h3": 5
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-cs-assurance",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-cs-healthcare-insurance.pdf",
+    "title": "Transforming Healthcare Insurance Operations with AI, RCM Automation & Risk Adjustment Accuracy",
+    "counts": {
+      "p": 11,
+      "h3": 5,
+      "h2": 7,
+      "ul": 13
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-cs-healthcare-insurance",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-cs-retail.pdf",
+    "title": "Modernizing Retail Operations with Cloud-Enabled OMS & Data-Driven Insights",
+    "counts": {
+      "h3": 6,
+      "h2": 7,
+      "p": 11,
+      "ul": 13
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-cs-retail",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-development-4sight-fit.pdf",
+    "title": "Optimizing Securities Financing with 4Sight: A High-Performance Trade Management Platform",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 11,
+      "ol": 5,
+      "ul": 29
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-development-4sight-fit",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-global-analytics.pdf",
+    "title": "Revolutionizing Event Check-Ins with Intelligent Facial Recognition",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 10,
+      "ol": 4,
+      "ul": 21,
+      "table": 2
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-global-analytics",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-pace-automation-final.pdf",
+    "title": "Accelerating Quality Assurance through PACE Automation Framework for a Global Asset Management Firm",
+    "counts": {
+      "h2": 5,
+      "p": 13,
+      "ol": 6,
+      "h3": 6,
+      "ul": 21
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-pace-automation-final",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-risk-coding.pdf",
+    "title": "Boosting Risk Coding Accuracy & Revenue with a Web-Based Solution",
+    "counts": {
+      "h2": 5,
+      "p": 16,
+      "ol": 4,
+      "h3": 9,
+      "ul": 14
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-risk-coding",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-rpa1.pdf",
+    "title": "Enterprise-Wide RPA Transformation for a Global Business",
+    "counts": {
+      "h3": 5,
+      "h2": 7,
+      "p": 11,
+      "ul": 16
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-rpa1",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-rpa2.pdf",
+    "title": "Transforming Operations with Enterprise-Wide RPA",
+    "counts": {
+      "h2": 6,
+      "p": 5,
+      "ul": 16
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-rpa2",
+    "post_status": "publish"
+  },
+  {
+    "source": "application-rpa3.pdf",
+    "title": "Building an Enterprise-Wide Automation Framework for Scalable Impact",
+    "counts": {
+      "h2": 7,
+      "p": 13,
+      "ul": 18,
+      "h3": 5
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "application-rpa3",
+    "post_status": "publish"
+  },
+  {
+    "source": "applications-24x6-application-support-research-equity-trading-group.pdf",
+    "title": "Enhancing Reliability and Efficiency through 24x6 Application Support for Research & Equity Trading",
+    "counts": {
+      "h2": 5,
+      "p": 9,
+      "ol": 5,
+      "h3": 9,
+      "ul": 21
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "applications-24x6-application-support-research-equity-trading-group",
+    "post_status": "publish"
+  },
+  {
+    "source": "applications-l1l2-application-dba-support-nutrition-client.pdf",
+    "title": "Delivering 9x7 L2 Application and DBA Support for a Leading Nutrition and Wellness Brand",
+    "counts": {
+      "h2": 8,
+      "p": 16,
+      "ol": 6,
+      "h3": 9,
+      "ul": 32,
+      "table": 1
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "applications-l1l2-application-dba-support-nutrition-client",
+    "post_status": "publish"
+  },
+  {
+    "source": "banking-cloud-migration-marketing-automation.pdf",
+    "title": "Cloud Migration and Marketing Automation: Transforming Data into Intelligent Customer Engagement",
+    "counts": {
+      "h2": 5,
+      "p": 13,
+      "ul": 8,
+      "ol": 4,
+      "h3": 4
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "banking-cloud-migration-marketing-automation",
+    "post_status": "publish"
+  },
+  {
+    "source": "banking-cs.pdf",
+    "title": "Digital Banking Transformation for a Leading Global Bank",
+    "counts": {
+      "h3": 5,
+      "h2": 7,
+      "p": 10,
+      "ul": 13
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "banking-cs",
+    "post_status": "publish"
+  },
+  {
+    "source": "cloud-apm-sentry.pdf",
+    "title": "Enhancing Application Reliability Through Cloud-Native APM with Sentry",
+    "counts": {
+      "h2": 6,
+      "p": 14,
+      "h3": 17,
+      "ul": 29
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "cloud-apm-sentry",
+    "post_status": "publish"
+  },
+  {
+    "source": "cloud-ci-cd.pdf",
+    "title": "Efficient Delivery with CI/CD at Scale",
+    "counts": {
+      "h2": 7,
+      "p": 11,
+      "ul": 19
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "cloud-ci-cd",
+    "post_status": "publish"
+  },
+  {
+    "source": "cloud-computing.pdf",
+    "title": "Delivering 24x7 Application Support and Operational Efficiency for a Global Financial Services Firm",
+    "counts": {
+      "h2": 5,
+      "p": 11,
+      "ol": 5,
+      "h3": 11,
+      "ul": 27
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "cloud-computing",
+    "post_status": "publish"
+  },
+  {
+    "source": "cloud-containerization.pdf",
+    "title": "Accelerating Agility with Containerization",
+    "counts": {
+      "h2": 5,
+      "p": 8,
+      "ul": 19
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "cloud-containerization",
+    "post_status": "publish"
+  },
+  {
+    "source": "cloud-devops.pdf",
+    "title": "Accelerating Application Deployment and Scalability through Cloud DevOps Transformation",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 11,
+      "ol": 9,
+      "ul": 26,
+      "table": 1
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "cloud-devops",
+    "post_status": "publish"
+  },
+  {
+    "source": "cloud-infrastructure-as-code.pdf",
+    "title": "Infrastructure as Code; Building Agility Through Automated Environments",
+    "counts": {
+      "h2": 7,
+      "p": 10,
+      "ul": 27
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "cloud-infrastructure-as-code",
+    "post_status": "publish"
+  },
+  {
+    "source": "data-cadis-fit.pdf",
+    "title": "Streamlining Enterprise Data Management through CADIS EDM Implementation",
+    "counts": {
+      "h2": 5,
+      "p": 8,
+      "h3": 11,
+      "ol": 4,
+      "ul": 21
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "data-cadis-fit",
+    "post_status": "publish"
+  },
+  {
+    "source": "data-compliance-system.pdf",
+    "title": "Building a Centralized Compliance Platform for Global Trade Surveillance",
+    "counts": {
+      "h2": 6,
+      "p": 7,
+      "h3": 11,
+      "ol": 5,
+      "ul": 26,
+      "table": 1
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "data-compliance-system",
+    "post_status": "publish"
+  },
+  {
+    "source": "data-markit-edm.pdf",
+    "title": "Optimizing Data Control and Trading Efficiency with Markit EDM",
+    "counts": {
+      "h2": 5,
+      "p": 9,
+      "ol": 4,
+      "h3": 9,
+      "ul": 20
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "data-markit-edm",
+    "post_status": "publish"
+  },
+  {
+    "source": "data-professional-services.pdf",
+    "title": "Empowering a Global Weight Loss Brand with Scalable, Always-On Digital Infrastructure",
+    "counts": {
+      "h2": 6,
+      "p": 10,
+      "ol": 5,
+      "h3": 12,
+      "ul": 32
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "data-professional-services",
+    "post_status": "publish"
+  },
+  {
+    "source": "data-use-case-cdp.pdf",
+    "title": "Digital Transformation for a Unified Customer Data Platform",
+    "counts": {
+      "h2": 5,
+      "p": 14,
+      "ol": 11,
+      "ul": 15,
+      "h3": 5
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "data-use-case-cdp",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-ab-argus.pdf",
+    "title": "Building a Scalable Compliance Data Warehouse for a Global Asset Management Firm",
+    "counts": {
+      "h2": 5,
+      "p": 7,
+      "ol": 5,
+      "h3": 9,
+      "ul": 27
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-ab-argus",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-beehive.pdf",
+    "title": "Building a Unified and Responsive Research Authoring Platform for Financial Analysts",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 11,
+      "ol": 4,
+      "ul": 28
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-beehive",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-compliance-trade-surveillance-solutions.pdf",
+    "title": "Building a Centralized Compliance Platform for Global Trade Surveillance",
+    "counts": {
+      "h2": 6,
+      "p": 7,
+      "h3": 11,
+      "ol": 5,
+      "ul": 26,
+      "table": 1
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-compliance-trade-surveillance-solutions",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-cs.pdf",
+    "title": "AI-Powered Transformation for a Global Asset Manager",
+    "counts": {
+      "h3": 6,
+      "h2": 7,
+      "p": 11,
+      "ul": 13
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-cs",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-esight.pdf",
+    "title": "ESight: Enabling Responsible Investing Through ESG Intelligence",
+    "counts": {
+      "h2": 5,
+      "p": 15,
+      "ol": 4,
+      "h3": 9,
+      "ul": 12
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-esight",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-fit-application-support.pdf",
+    "title": "Enhancing Reliability and Business Continuity in Global Fixed Income Trading Systems",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "ol": 5,
+      "h3": 10,
+      "ul": 30
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-fit-application-support",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-market-edm.pdf",
+    "title": "Optimizing Data Operations and Trading Efficiency through IHS Markit EDM Implementation",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 10,
+      "ol": 4,
+      "ul": 18,
+      "table": 2
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-market-edm",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-qsight.pdf",
+    "title": "QSight: Empowering Portfolio Managers with Data-Driven Precision",
+    "counts": {
+      "h2": 5,
+      "p": 21,
+      "ol": 4,
+      "h3": 8,
+      "ul": 13
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-qsight",
+    "post_status": "publish"
+  },
+  {
+    "source": "fintech-study-nlp.pdf",
+    "title": "Accelerating Financial Data Research with NLP-Driven Data Extraction and Structuring",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 10,
+      "ol": 8,
+      "ul": 22,
+      "table": 2
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fintech-study-nlp",
+    "post_status": "publish"
+  },
+  {
+    "source": "fixed-income-model.pdf",
+    "title": "Predicting Fixed Income Performance through Data-Driven Liquidity Modelling",
+    "counts": {
+      "h2": 5,
+      "p": 23,
+      "ol": 4,
+      "h3": 10,
+      "ul": 12
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "fixed-income-model",
+    "post_status": "publish"
+  },
+  {
+    "source": "healthcare-edinteroperability.pdf",
+    "title": "Automating EDI Interoperability in U.S. Healthcare with Boomi",
+    "counts": {
+      "h2": 5,
+      "p": 18,
+      "ol": 5,
+      "h3": 10,
+      "ul": 18
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "healthcare-edinteroperability",
+    "post_status": "publish"
+  },
+  {
+    "source": "healthcare-noc-helpdesk-support.pdf",
+    "title": "Ensuring 24x7 Infrastructure Resilience and End-User Reliability for a Leading U.S. Healthcare Organization",
+    "counts": {
+      "h2": 9,
+      "p": 12,
+      "ol": 23,
+      "table": 1,
+      "h3": 8,
+      "ul": 25
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "healthcare-noc-helpdesk-support",
+    "post_status": "publish"
+  },
+  {
+    "source": "healthcare-provider-management-final.pdf",
+    "title": "Global Web-Based Platform for Provider and PCP Management",
+    "counts": {
+      "h2": 5,
+      "p": 10,
+      "ol": 5,
+      "h3": 10,
+      "ul": 20
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "healthcare-provider-management-final",
+    "post_status": "publish"
+  },
+  {
+    "source": "healthcare-reporting.pdf",
+    "title": "Implementing Custom Regulatory Reporting for U.S. Healthcare Payers",
+    "counts": {
+      "h2": 5,
+      "p": 14,
+      "ol": 4,
+      "h3": 8,
+      "ul": 11
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "healthcare-reporting",
+    "post_status": "publish"
+  },
+  {
+    "source": "infra-advisory-consulting-services.pdf",
+    "title": "Transforming IT Infrastructure for a Leading Healthcare Provider",
+    "counts": {
+      "h2": 7,
+      "p": 9,
+      "h3": 11,
+      "ol": 5,
+      "ul": 25,
+      "table": 2
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "infra-advisory-consulting-services",
+    "post_status": "publish"
+  },
+  {
+    "source": "infra-application-monitoring.pdf",
+    "title": "Modernizing Application Monitoring for Always-On Performance",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "ul": 13,
+      "ol": 15
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "infra-application-monitoring",
+    "post_status": "publish"
+  },
+  {
+    "source": "infra-global-asset-mgmt-firm.pdf",
+    "title": "Transforming Global Database Operations through 24x7 Multi-Platform DBA Support",
+    "counts": {
+      "h2": 5,
+      "p": 13,
+      "ol": 6,
+      "h3": 9,
+      "ul": 36
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "infra-global-asset-mgmt-firm",
+    "post_status": "publish"
+  },
+  {
+    "source": "infra-itsm-jira.pdf",
+    "title": "ITSM Modernization via Jira Cloud Migration",
+    "counts": {
+      "h2": 5,
+      "p": 6,
+      "ul": 13,
+      "ol": 16
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "infra-itsm-jira",
+    "post_status": "publish"
+  },
+  {
+    "source": "infra-version-control-system.pdf",
+    "title": "Seamless Cloud Migration for Business Agility",
+    "counts": {
+      "h2": 7,
+      "p": 10,
+      "ul": 26
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "infra-version-control-system",
+    "post_status": "publish"
+  },
+  {
+    "source": "infrastructure-24x7-support-financial-client.pdf",
+    "title": "Enabling 24x7 Multi-Platform Infrastructure Support for a Global Financial Client",
+    "counts": {
+      "h2": 5,
+      "p": 17,
+      "ol": 6,
+      "h3": 14,
+      "ul": 40
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "infrastructure-24x7-support-financial-client",
+    "post_status": "publish"
+  },
+  {
+    "source": "quality-assurance-automation.pdf",
+    "title": "Enterprise-Wide Test Automation with NuWare’s PACE Platform",
+    "counts": {
+      "h2": 5,
+      "p": 14,
+      "h3": 9,
+      "ol": 6,
+      "ul": 15
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "quality-assurance-automation",
+    "post_status": "publish"
+  },
+  {
+    "source": "retail-nutri-atg.pdf",
+    "title": "Enabling Agile Content Management and Personalization through ATG Merchandising (BCC)",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 11,
+      "ol": 4,
+      "ul": 22,
+      "table": 2
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "retail-nutri-atg",
+    "post_status": "publish"
+  },
+  {
+    "source": "retail-nutri-oms.pdf",
+    "title": "Revamping an ATG eCommerce Platform to Enhance Customer Experience and Retention",
+    "counts": {
+      "h2": 6,
+      "p": 6,
+      "h3": 14,
+      "ol": 7,
+      "ul": 24,
+      "table": 1
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "retail-nutri-oms",
+    "post_status": "publish"
+  },
+  {
+    "source": "retail-use-case-cdp.pdf",
+    "title": "Digital Transformation for a Unified Customer Data Platform",
+    "counts": {
+      "h2": 5,
+      "p": 14,
+      "ol": 11,
+      "ul": 15,
+      "h3": 5
+    },
+    "result": "dry_run",
+    "post_type": "case-studies",
+    "slug": "retail-use-case-cdp",
+    "post_status": "publish"
+  }
+]

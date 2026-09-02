@@ -68,6 +68,7 @@ $nuware_terms_url = $nuware_terms_page instanceof WP_Post && 'publish' === $nuwa
 	</div>
 </footer>
 <?php get_template_part( 'template-parts/sections/contact-overlay' ); ?>
+<?php get_template_part( 'template-parts/sections/application-overlay' ); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

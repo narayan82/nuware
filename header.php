@@ -73,6 +73,15 @@
 
 		<div class="site-header__controls">
 			<button
+				class="site-header__contact-trigger"
+				type="button"
+				data-contact-trigger
+				aria-label="<?php esc_attr_e( 'Get in Touch', 'nuware' ); ?>"
+			>
+				<span class="screen-reader-text"><?php esc_html_e( 'Get in Touch', 'nuware' ); ?></span>
+			</button>
+
+			<button
 				class="site-header__theme-toggle"
 				type="button"
 				aria-label="<?php esc_attr_e( 'Switch to dark mode', 'nuware' ); ?>"

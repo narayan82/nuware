@@ -1,0 +1,788 @@
+[
+  {
+    "source": "ai-data-sciences-nl.pdf",
+    "title": "Accelerating Financial Data Research with NLP-Driven Data Extraction and Structuring",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 10,
+      "ol": 8,
+      "ul": 22,
+      "table": 2
+    },
+    "result": "published",
+    "post_id": 145,
+    "slug": "ai-data-sciences-nl",
+    "url": "http://nuware.local/case-studies/ai-data-sciences-nl/"
+  },
+  {
+    "source": "ai-scaling-agentic-solutions.pdf",
+    "title": "Scaling Agentic Solutions for Portfolio Management Workflows",
+    "counts": {
+      "h2": 6,
+      "p": 16,
+      "ol": 3,
+      "ul": 21,
+      "h3": 4,
+      "table": 2
+    },
+    "result": "published",
+    "post_id": 146,
+    "slug": "ai-scaling-agentic-solutions",
+    "url": "http://nuware.local/case-studies/ai-scaling-agentic-solutions/"
+  },
+  {
+    "source": "application-ab-salesforce.pdf",
+    "title": "Salesforce Integration and Data Migration for Unified CRM Intelligence",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 11,
+      "ol": 4,
+      "ul": 28
+    },
+    "result": "published",
+    "post_id": 147,
+    "slug": "application-ab-salesforce",
+    "url": "http://nuware.local/case-studies/application-ab-salesforce/"
+  },
+  {
+    "source": "application-crm.pdf",
+    "title": "Transforming Enterprise CRM Operations through Data Integration and Salesforce Migration",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 11,
+      "ol": 4,
+      "ul": 25,
+      "table": 1
+    },
+    "result": "published",
+    "post_id": 148,
+    "slug": "application-crm",
+    "url": "http://nuware.local/case-studies/application-crm/"
+  },
+  {
+    "source": "application-cs-assurance.pdf",
+    "title": "Reinventing QA to Deliver Faster, Better, and More Reliable Digital Products",
+    "counts": {
+      "h2": 8,
+      "p": 12,
+      "ul": 16,
+      "h3": 5
+    },
+    "result": "published",
+    "post_id": 149,
+    "slug": "application-cs-assurance",
+    "url": "http://nuware.local/case-studies/application-cs-assurance/"
+  },
+  {
+    "source": "application-cs-healthcare-insurance.pdf",
+    "title": "Transforming Healthcare Insurance Operations with AI, RCM Automation &amp; Risk Adjustment Accuracy",
+    "counts": {
+      "p": 11,
+      "h3": 5,
+      "h2": 7,
+      "ul": 13
+    },
+    "result": "published",
+    "post_id": 150,
+    "slug": "application-cs-healthcare-insurance",
+    "url": "http://nuware.local/case-studies/application-cs-healthcare-insurance/"
+  },
+  {
+    "source": "application-cs-retail.pdf",
+    "title": "Modernizing Retail Operations with Cloud-Enabled OMS &amp; Data-Driven Insights",
+    "counts": {
+      "h3": 6,
+      "h2": 7,
+      "p": 11,
+      "ul": 13
+    },
+    "result": "published",
+    "post_id": 151,
+    "slug": "application-cs-retail",
+    "url": "http://nuware.local/case-studies/application-cs-retail/"
+  },
+  {
+    "source": "application-development-4sight-fit.pdf",
+    "title": "Optimizing Securities Financing with 4Sight: A High-Performance Trade Management Platform",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 11,
+      "ol": 5,
+      "ul": 29
+    },
+    "result": "published",
+    "post_id": 152,
+    "slug": "application-development-4sight-fit",
+    "url": "http://nuware.local/case-studies/application-development-4sight-fit/"
+  },
+  {
+    "source": "application-global-analytics.pdf",
+    "title": "Revolutionizing Event Check-Ins with Intelligent Facial Recognition",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 10,
+      "ol": 4,
+      "ul": 21,
+      "table": 2
+    },
+    "result": "published",
+    "post_id": 153,
+    "slug": "application-global-analytics",
+    "url": "http://nuware.local/case-studies/application-global-analytics/"
+  },
+  {
+    "source": "application-pace-automation-final.pdf",
+    "title": "Accelerating Quality Assurance through PACE Automation Framework for a Global Asset Management Firm",
+    "counts": {
+      "h2": 5,
+      "p": 13,
+      "ol": 6,
+      "h3": 6,
+      "ul": 21
+    },
+    "result": "published",
+    "post_id": 154,
+    "slug": "application-pace-automation-final",
+    "url": "http://nuware.local/case-studies/application-pace-automation-final/"
+  },
+  {
+    "source": "application-risk-coding.pdf",
+    "title": "Boosting Risk Coding Accuracy &amp; Revenue with a Web-Based Solution",
+    "counts": {
+      "h2": 5,
+      "p": 16,
+      "ol": 4,
+      "h3": 9,
+      "ul": 14
+    },
+    "result": "published",
+    "post_id": 155,
+    "slug": "application-risk-coding",
+    "url": "http://nuware.local/case-studies/application-risk-coding/"
+  },
+  {
+    "source": "application-rpa1.pdf",
+    "title": "Enterprise-Wide RPA Transformation for a Global Business",
+    "counts": {
+      "h3": 5,
+      "h2": 7,
+      "p": 11,
+      "ul": 16
+    },
+    "result": "published",
+    "post_id": 156,
+    "slug": "application-rpa1",
+    "url": "http://nuware.local/case-studies/application-rpa1/"
+  },
+  {
+    "source": "application-rpa2.pdf",
+    "title": "Transforming Operations with Enterprise-Wide RPA",
+    "counts": {
+      "h2": 6,
+      "p": 5,
+      "ul": 16
+    },
+    "result": "published",
+    "post_id": 157,
+    "slug": "application-rpa2",
+    "url": "http://nuware.local/case-studies/application-rpa2/"
+  },
+  {
+    "source": "application-rpa3.pdf",
+    "title": "Building an Enterprise-Wide Automation Framework for Scalable Impact",
+    "counts": {
+      "h2": 7,
+      "p": 13,
+      "ul": 18,
+      "h3": 5
+    },
+    "result": "published",
+    "post_id": 158,
+    "slug": "application-rpa3",
+    "url": "http://nuware.local/case-studies/application-rpa3/"
+  },
+  {
+    "source": "applications-24x6-application-support-research-equity-trading-group.pdf",
+    "title": "Enhancing Reliability and Efficiency through 24&#215;6 Application Support for Research &amp; Equity Trading",
+    "counts": {
+      "h2": 5,
+      "p": 9,
+      "ol": 5,
+      "h3": 9,
+      "ul": 21
+    },
+    "result": "published",
+    "post_id": 159,
+    "slug": "applications-24x6-application-support-research-equity-trading-group",
+    "url": "http://nuware.local/case-studies/applications-24x6-application-support-research-equity-trading-group/"
+  },
+  {
+    "source": "applications-l1l2-application-dba-support-nutrition-client.pdf",
+    "title": "Delivering 9&#215;7 L2 Application and DBA Support for a Leading Nutrition and Wellness Brand",
+    "counts": {
+      "h2": 8,
+      "p": 16,
+      "ol": 6,
+      "h3": 9,
+      "ul": 32,
+      "table": 1
+    },
+    "result": "published",
+    "post_id": 160,
+    "slug": "applications-l1l2-application-dba-support-nutrition-client",
+    "url": "http://nuware.local/case-studies/applications-l1l2-application-dba-support-nutrition-client/"
+  },
+  {
+    "source": "banking-cloud-migration-marketing-automation.pdf",
+    "title": "Cloud Migration and Marketing Automation: Transforming Data into Intelligent Customer Engagement",
+    "counts": {
+      "h2": 5,
+      "p": 13,
+      "ul": 8,
+      "ol": 4,
+      "h3": 4
+    },
+    "result": "published",
+    "post_id": 161,
+    "slug": "banking-cloud-migration-marketing-automation",
+    "url": "http://nuware.local/case-studies/banking-cloud-migration-marketing-automation/"
+  },
+  {
+    "source": "banking-cs.pdf",
+    "title": "Digital Banking Transformation for a Leading Global Bank",
+    "counts": {
+      "h3": 5,
+      "h2": 7,
+      "p": 10,
+      "ul": 13
+    },
+    "result": "published",
+    "post_id": 162,
+    "slug": "banking-cs",
+    "url": "http://nuware.local/case-studies/banking-cs/"
+  },
+  {
+    "source": "cloud-apm-sentry.pdf",
+    "title": "Enhancing Application Reliability Through Cloud-Native APM with Sentry",
+    "counts": {
+      "h2": 6,
+      "p": 14,
+      "h3": 17,
+      "ul": 29
+    },
+    "result": "published",
+    "post_id": 163,
+    "slug": "cloud-apm-sentry",
+    "url": "http://nuware.local/case-studies/cloud-apm-sentry/"
+  },
+  {
+    "source": "cloud-ci-cd.pdf",
+    "title": "Efficient Delivery with CI/CD at Scale",
+    "counts": {
+      "h2": 7,
+      "p": 11,
+      "ul": 19
+    },
+    "result": "published",
+    "post_id": 164,
+    "slug": "cloud-ci-cd",
+    "url": "http://nuware.local/case-studies/cloud-ci-cd/"
+  },
+  {
+    "source": "cloud-computing.pdf",
+    "title": "Delivering 24&#215;7 Application Support and Operational Efficiency for a Global Financial Services Firm",
+    "counts": {
+      "h2": 5,
+      "p": 11,
+      "ol": 5,
+      "h3": 11,
+      "ul": 27
+    },
+    "result": "published",
+    "post_id": 165,
+    "slug": "cloud-computing",
+    "url": "http://nuware.local/case-studies/cloud-computing/"
+  },
+  {
+    "source": "cloud-containerization.pdf",
+    "title": "Accelerating Agility with Containerization",
+    "counts": {
+      "h2": 5,
+      "p": 8,
+      "ul": 19
+    },
+    "result": "published",
+    "post_id": 166,
+    "slug": "cloud-containerization",
+    "url": "http://nuware.local/case-studies/cloud-containerization/"
+  },
+  {
+    "source": "cloud-devops.pdf",
+    "title": "Accelerating Application Deployment and Scalability through Cloud DevOps Transformation",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 11,
+      "ol": 9,
+      "ul": 26,
+      "table": 1
+    },
+    "result": "published",
+    "post_id": 167,
+    "slug": "cloud-devops",
+    "url": "http://nuware.local/case-studies/cloud-devops/"
+  },
+  {
+    "source": "cloud-infrastructure-as-code.pdf",
+    "title": "Infrastructure as Code; Building Agility Through Automated Environments",
+    "counts": {
+      "h2": 7,
+      "p": 10,
+      "ul": 27
+    },
+    "result": "published",
+    "post_id": 168,
+    "slug": "cloud-infrastructure-as-code",
+    "url": "http://nuware.local/case-studies/cloud-infrastructure-as-code/"
+  },
+  {
+    "source": "data-cadis-fit.pdf",
+    "title": "Streamlining Enterprise Data Management through CADIS EDM Implementation",
+    "counts": {
+      "h2": 5,
+      "p": 8,
+      "h3": 11,
+      "ol": 4,
+      "ul": 21
+    },
+    "result": "published",
+    "post_id": 169,
+    "slug": "data-cadis-fit",
+    "url": "http://nuware.local/case-studies/data-cadis-fit/"
+  },
+  {
+    "source": "data-compliance-system.pdf",
+    "title": "Building a Centralized Compliance Platform for Global Trade Surveillance",
+    "counts": {
+      "h2": 6,
+      "p": 7,
+      "h3": 11,
+      "ol": 5,
+      "ul": 26,
+      "table": 1
+    },
+    "result": "published",
+    "post_id": 170,
+    "slug": "data-compliance-system",
+    "url": "http://nuware.local/case-studies/data-compliance-system/"
+  },
+  {
+    "source": "data-markit-edm.pdf",
+    "title": "Optimizing Data Control and Trading Efficiency with Markit EDM",
+    "counts": {
+      "h2": 5,
+      "p": 9,
+      "ol": 4,
+      "h3": 9,
+      "ul": 20
+    },
+    "result": "published",
+    "post_id": 171,
+    "slug": "data-markit-edm",
+    "url": "http://nuware.local/case-studies/data-markit-edm/"
+  },
+  {
+    "source": "data-professional-services.pdf",
+    "title": "Empowering a Global Weight Loss Brand with Scalable, Always-On Digital Infrastructure",
+    "counts": {
+      "h2": 6,
+      "p": 10,
+      "ol": 5,
+      "h3": 12,
+      "ul": 32
+    },
+    "result": "published",
+    "post_id": 172,
+    "slug": "data-professional-services",
+    "url": "http://nuware.local/case-studies/data-professional-services/"
+  },
+  {
+    "source": "data-use-case-cdp.pdf",
+    "title": "Digital Transformation for a Unified Customer Data Platform",
+    "counts": {
+      "h2": 5,
+      "p": 14,
+      "ol": 11,
+      "ul": 15,
+      "h3": 5
+    },
+    "result": "published",
+    "post_id": 173,
+    "slug": "data-use-case-cdp",
+    "url": "http://nuware.local/case-studies/data-use-case-cdp/"
+  },
+  {
+    "source": "fintech-ab-argus.pdf",
+    "title": "Building a Scalable Compliance Data Warehouse for a Global Asset Management Firm",
+    "counts": {
+      "h2": 5,
+      "p": 7,
+      "ol": 5,
+      "h3": 9,
+      "ul": 27
+    },
+    "result": "published",
+    "post_id": 174,
+    "slug": "fintech-ab-argus",
+    "url": "http://nuware.local/case-studies/fintech-ab-argus/"
+  },
+  {
+    "source": "fintech-beehive.pdf",
+    "title": "Building a Unified and Responsive Research Authoring Platform for Financial Analysts",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 11,
+      "ol": 4,
+      "ul": 28
+    },
+    "result": "published",
+    "post_id": 175,
+    "slug": "fintech-beehive",
+    "url": "http://nuware.local/case-studies/fintech-beehive/"
+  },
+  {
+    "source": "fintech-compliance-trade-surveillance-solutions.pdf",
+    "title": "Building a Centralized Compliance Platform for Global Trade Surveillance",
+    "counts": {
+      "h2": 6,
+      "p": 7,
+      "h3": 11,
+      "ol": 5,
+      "ul": 26,
+      "table": 1
+    },
+    "result": "skipped_duplicate",
+    "post_id": 170,
+    "url": "http://nuware.local/case-studies/data-compliance-system/"
+  },
+  {
+    "source": "fintech-cs.pdf",
+    "title": "AI-Powered Transformation for a Global Asset Manager",
+    "counts": {
+      "h3": 6,
+      "h2": 7,
+      "p": 11,
+      "ul": 13
+    },
+    "result": "published",
+    "post_id": 176,
+    "slug": "fintech-cs",
+    "url": "http://nuware.local/case-studies/fintech-cs/"
+  },
+  {
+    "source": "fintech-esight.pdf",
+    "title": "ESight: Enabling Responsible Investing Through ESG Intelligence",
+    "counts": {
+      "h2": 5,
+      "p": 15,
+      "ol": 4,
+      "h3": 9,
+      "ul": 12
+    },
+    "result": "published",
+    "post_id": 177,
+    "slug": "fintech-esight",
+    "url": "http://nuware.local/case-studies/fintech-esight/"
+  },
+  {
+    "source": "fintech-fit-application-support.pdf",
+    "title": "Enhancing Reliability and Business Continuity in Global Fixed Income Trading Systems",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "ol": 5,
+      "h3": 10,
+      "ul": 30
+    },
+    "result": "published",
+    "post_id": 178,
+    "slug": "fintech-fit-application-support",
+    "url": "http://nuware.local/case-studies/fintech-fit-application-support/"
+  },
+  {
+    "source": "fintech-market-edm.pdf",
+    "title": "Optimizing Data Operations and Trading Efficiency through IHS Markit EDM Implementation",
+    "counts": {
+      "h2": 6,
+      "p": 9,
+      "h3": 10,
+      "ol": 4,
+      "ul": 18,
+      "table": 2
+    },
+    "result": "published",
+    "post_id": 179,
+    "slug": "fintech-market-edm",
+    "url": "http://nuware.local/case-studies/fintech-market-edm/"
+  },
+  {
+    "source": "fintech-qsight.pdf",
+    "title": "QSight: Empowering Portfolio Managers with Data-Driven Precision",
+    "counts": {
+      "h2": 5,
+      "p": 21,
+      "ol": 4,
+      "h3": 8,
+      "ul": 13
+    },
+    "result": "published",
+    "post_id": 180,
+    "slug": "fintech-qsight",
+    "url": "http://nuware.local/case-studies/fintech-qsight/"
+  },
+  {
+    "source": "fintech-study-nlp.pdf",
+    "title": "Accelerating Financial Data Research with NLP-Driven Data Extraction and Structuring",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 10,
+      "ol": 8,
+      "ul": 22,
+      "table": 2
+    },
+    "result": "skipped_duplicate",
+    "post_id": 145,
+    "url": "http://nuware.local/case-studies/ai-data-sciences-nl/"
+  },
+  {
+    "source": "fixed-income-model.pdf",
+    "title": "Predicting Fixed Income Performance through Data-Driven Liquidity Modelling",
+    "counts": {
+      "h2": 5,
+      "p": 23,
+      "ol": 4,
+      "h3": 10,
+      "ul": 12
+    },
+    "result": "published",
+    "post_id": 181,
+    "slug": "fixed-income-model",
+    "url": "http://nuware.local/case-studies/fixed-income-model/"
+  },
+  {
+    "source": "healthcare-edinteroperability.pdf",
+    "title": "Automating EDI Interoperability in U.S. Healthcare with Boomi",
+    "counts": {
+      "h2": 5,
+      "p": 18,
+      "ol": 5,
+      "h3": 10,
+      "ul": 18
+    },
+    "result": "published",
+    "post_id": 182,
+    "slug": "healthcare-edinteroperability",
+    "url": "http://nuware.local/case-studies/healthcare-edinteroperability/"
+  },
+  {
+    "source": "healthcare-noc-helpdesk-support.pdf",
+    "title": "Ensuring 24&#215;7 Infrastructure Resilience and End-User Reliability for a Leading U.S. Healthcare Organization",
+    "counts": {
+      "h2": 9,
+      "p": 12,
+      "ol": 23,
+      "table": 1,
+      "h3": 8,
+      "ul": 25
+    },
+    "result": "published",
+    "post_id": 183,
+    "slug": "healthcare-noc-helpdesk-support",
+    "url": "http://nuware.local/case-studies/healthcare-noc-helpdesk-support/"
+  },
+  {
+    "source": "healthcare-provider-management-final.pdf",
+    "title": "Global Web-Based Platform for Provider and PCP Management",
+    "counts": {
+      "h2": 5,
+      "p": 10,
+      "ol": 5,
+      "h3": 10,
+      "ul": 20
+    },
+    "result": "published",
+    "post_id": 184,
+    "slug": "healthcare-provider-management-final",
+    "url": "http://nuware.local/case-studies/healthcare-provider-management-final/"
+  },
+  {
+    "source": "healthcare-reporting.pdf",
+    "title": "Implementing Custom Regulatory Reporting for U.S. Healthcare Payers",
+    "counts": {
+      "h2": 5,
+      "p": 14,
+      "ol": 4,
+      "h3": 8,
+      "ul": 11
+    },
+    "result": "published",
+    "post_id": 185,
+    "slug": "healthcare-reporting",
+    "url": "http://nuware.local/case-studies/healthcare-reporting/"
+  },
+  {
+    "source": "infra-advisory-consulting-services.pdf",
+    "title": "Transforming IT Infrastructure for a Leading Healthcare Provider",
+    "counts": {
+      "h2": 7,
+      "p": 9,
+      "h3": 11,
+      "ol": 5,
+      "ul": 25,
+      "table": 2
+    },
+    "result": "published",
+    "post_id": 186,
+    "slug": "infra-advisory-consulting-services",
+    "url": "http://nuware.local/case-studies/infra-advisory-consulting-services/"
+  },
+  {
+    "source": "infra-application-monitoring.pdf",
+    "title": "Modernizing Application Monitoring for Always-On Performance",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "ul": 13,
+      "ol": 15
+    },
+    "result": "published",
+    "post_id": 187,
+    "slug": "infra-application-monitoring",
+    "url": "http://nuware.local/case-studies/infra-application-monitoring/"
+  },
+  {
+    "source": "infra-global-asset-mgmt-firm.pdf",
+    "title": "Transforming Global Database Operations through 24&#215;7 Multi-Platform DBA Support",
+    "counts": {
+      "h2": 5,
+      "p": 13,
+      "ol": 6,
+      "h3": 9,
+      "ul": 36
+    },
+    "result": "published",
+    "post_id": 188,
+    "slug": "infra-global-asset-mgmt-firm",
+    "url": "http://nuware.local/case-studies/infra-global-asset-mgmt-firm/"
+  },
+  {
+    "source": "infra-itsm-jira.pdf",
+    "title": "ITSM Modernization via Jira Cloud Migration",
+    "counts": {
+      "h2": 5,
+      "p": 6,
+      "ul": 13,
+      "ol": 16
+    },
+    "result": "published",
+    "post_id": 189,
+    "slug": "infra-itsm-jira",
+    "url": "http://nuware.local/case-studies/infra-itsm-jira/"
+  },
+  {
+    "source": "infra-version-control-system.pdf",
+    "title": "Seamless Cloud Migration for Business Agility",
+    "counts": {
+      "h2": 7,
+      "p": 10,
+      "ul": 26
+    },
+    "result": "published",
+    "post_id": 190,
+    "slug": "infra-version-control-system",
+    "url": "http://nuware.local/case-studies/infra-version-control-system/"
+  },
+  {
+    "source": "infrastructure-24x7-support-financial-client.pdf",
+    "title": "Enabling 24&#215;7 Multi-Platform Infrastructure Support for a Global Financial Client",
+    "counts": {
+      "h2": 5,
+      "p": 17,
+      "ol": 6,
+      "h3": 14,
+      "ul": 40
+    },
+    "result": "published",
+    "post_id": 191,
+    "slug": "infrastructure-24x7-support-financial-client",
+    "url": "http://nuware.local/case-studies/infrastructure-24x7-support-financial-client/"
+  },
+  {
+    "source": "quality-assurance-automation.pdf",
+    "title": "Enterprise-Wide Test Automation with NuWare’s PACE Platform",
+    "counts": {
+      "h2": 5,
+      "p": 14,
+      "h3": 9,
+      "ol": 6,
+      "ul": 15
+    },
+    "result": "published",
+    "post_id": 192,
+    "slug": "quality-assurance-automation",
+    "url": "http://nuware.local/case-studies/quality-assurance-automation/"
+  },
+  {
+    "source": "retail-nutri-atg.pdf",
+    "title": "Enabling Agile Content Management and Personalization through ATG Merchandising (BCC)",
+    "counts": {
+      "h2": 6,
+      "p": 8,
+      "h3": 11,
+      "ol": 4,
+      "ul": 22,
+      "table": 2
+    },
+    "result": "published",
+    "post_id": 193,
+    "slug": "retail-nutri-atg",
+    "url": "http://nuware.local/case-studies/retail-nutri-atg/"
+  },
+  {
+    "source": "retail-nutri-oms.pdf",
+    "title": "Revamping an ATG eCommerce Platform to Enhance Customer Experience and Retention",
+    "counts": {
+      "h2": 6,
+      "p": 6,
+      "h3": 14,
+      "ol": 7,
+      "ul": 24,
+      "table": 1
+    },
+    "result": "published",
+    "post_id": 194,
+    "slug": "retail-nutri-oms",
+    "url": "http://nuware.local/case-studies/retail-nutri-oms/"
+  },
+  {
+    "source": "retail-use-case-cdp.pdf",
+    "title": "Digital Transformation for a Unified Customer Data Platform",
+    "counts": {
+      "h2": 5,
+      "p": 14,
+      "ol": 11,
+      "ul": 15,
+      "h3": 5
+    },
+    "result": "skipped_duplicate",
+    "post_id": 173,
+    "url": "http://nuware.local/case-studies/data-use-case-cdp/"
+  }
+]

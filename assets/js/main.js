@@ -5,7 +5,31 @@
 
 document.documentElement.classList.add('has-js');
 
-import('./modules/contact-overlay.js?v=1').then(({ initContactOverlay }) => initContactOverlay());
+if (document.querySelector('.case-library__filters')) {
+  import('./modules/case-library.js?v=1').then(({ initCaseLibrary }) => initCaseLibrary());
+}
+
+import('./modules/contact-overlay.js?v=2').then(({ initContactOverlay }) => initContactOverlay());
+
+if (document.querySelector('[data-application-overlay]')) {
+  import('./modules/application-overlay.js?v=1').then(({ initApplicationOverlay }) => initApplicationOverlay());
+}
+
+if (document.querySelector('[data-ai-hero]')) {
+  import('./modules/ai-page.js?v=7').then(({ initAiPage }) => initAiPage());
+}
+
+if (document.querySelector('[data-solutions-tabs]')) {
+  import('./modules/solutions-page.js?v=6').then(({ initSolutionsPage }) => initSolutionsPage());
+}
+
+if (document.querySelector('[data-careers-typing]')) {
+  import('./modules/careers-typing.js?v=1').then(({ initCareersTyping }) => initCareersTyping());
+}
+
+if (document.querySelector('[data-careers-positions]')) {
+  import('./modules/careers-positions.js?v=1').then(({ initCareersPositions }) => initCareersPositions());
+}
 
 import('./modules/hero-answer.js?v=1').then(({ initHeroAnswer }) => initHeroAnswer());
 

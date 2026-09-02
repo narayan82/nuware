@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="wand_stars">
+<mask id="mask0_0_15" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40">
+<rect id="Bounding box" width="40" height="40" fill="#D9D9D9" style="fill:#D9D9D9;fill:color(display-p3 0.8510 0.8510 0.8510);fill-opacity:1;"/>
+</mask>
+<g mask="url(#mask0_0_15)">
+<path id="wand_stars_2" d="M7.30792 34.1496L5.83333 32.675L19.0642 19.4467L11.6892 17.6237L19.185 12.9617L18.5417 4.16667L25.2833 9.8375L33.4371 6.53833L30.1454 14.7008L35.8333 21.4338L27.0108 20.7979L22.3675 28.2829L20.5396 20.9187L7.30792 34.1496ZM8.30875 11.8267L5.83333 9.35167L8.32583 6.85917L10.8121 9.33417L8.30875 11.8267ZM23.2042 22.9829L25.8983 18.6304L31.0096 19.0042L27.6892 15.0779L29.6071 10.3512L24.8804 12.2692L20.9542 8.95708L21.3279 14.06L16.9913 16.78L21.9617 18.0138L23.2042 22.9829ZM30.6658 34.1667L28.1904 31.6742L30.6658 29.1879L33.1408 31.6912L30.6658 34.1667Z" fill="#1C1B1F" style="fill:#1C1B1F;fill:color(display-p3 0.1098 0.1059 0.1216);fill-opacity:1;"/>
+</g>
+</g>
+</svg>

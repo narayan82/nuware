@@ -8,8 +8,12 @@ function nuware_enqueue_assets() {
 	// The contact form is rendered in the footer, so load its assets before wp_head.
 	if ( ! $is_backup && function_exists( 'gravity_form_enqueue_scripts' ) ) {
 		gravity_form_enqueue_scripts( 1, true );
+
+		if ( is_page( 'careers' ) ) {
+			gravity_form_enqueue_scripts( 2, true );
+		}
 	}
-	if ( is_front_page() || $is_backup ) {
+	if ( is_front_page() || $is_backup || is_page( 'ai' ) ) {
 		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_script( 'nuware-particles', get_template_directory_uri() . '/assets/js/vendor/particles.js', array(), '2.0.0', true );
 	}
@@ -29,7 +33,7 @@ function nuware_enqueue_assets() {
 	wp_enqueue_script(
 		'nuware-main',
 		get_template_directory_uri() . $js_asset,
-		( is_front_page() || $is_backup ) ? array( 'nuware-particles' ) : array(),
+		( is_front_page() || $is_backup || is_page( 'ai' ) ) ? array( 'nuware-particles' ) : array(),
 		file_exists( $js_path ) ? (string) filemtime( $js_path ) : $theme_version,
 		true
 	);

@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="cloud">
+<mask id="mask0_0_7" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+<rect id="Bounding box" width="20" height="20" fill="white" style="fill:white;fill-opacity:1;"/>
+</mask>
+<g mask="url(#mask0_0_7)">
+<path id="cloud_2" d="M5 16C3.88889 16 2.94444 15.6111 2.16667 14.8333C1.38889 14.0556 1 13.1111 1 12C1 10.9444 1.36111 10.0313 2.08333 9.26042C2.80556 8.48958 3.6875 8.06944 4.72917 8C5.04861 6.81944 5.69097 5.85764 6.65625 5.11458C7.62153 4.37153 8.73611 4 10 4C11.4306 4 12.6736 4.48264 13.7292 5.44792C14.7847 6.41319 15.375 7.59722 15.5 9C16.4722 9 17.2986 9.34028 17.9792 10.0208C18.6597 10.7014 19 11.5278 19 12.5C19 13.4722 18.6597 14.2986 17.9792 14.9792C17.2986 15.6597 16.4722 16 15.5 16H5Z" fill="white" style="fill:white;fill-opacity:1;"/>
+</g>
+</g>
+</svg>

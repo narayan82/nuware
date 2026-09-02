@@ -1,0 +1,398 @@
+@use '../base/variables' as *;
+
+// BEM convention: block `.about-page`, element `.about-page__title`, modifier `.about-page--dark`.
+.about-page {
+  --about-bg: var(--color-surface);
+  --about-surface: #fff;
+  --about-border: #e2e2e2;
+  --about-text: #172033;
+  --about-muted: #565f70;
+  --about-cta-bg: #172033;
+  --about-cta-text: #fff;
+  --about-leadership-bg: #fff;
+  --about-leader-photo-bg: #e8ebf1;
+  --about-quote-bg: var(--color-surface);
+  font-family: 'Geist', var(--font-family-base);
+
+  &__hero {
+    display: flex;
+    min-height: 600px;
+    align-items: center;
+    padding-block: 64px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--about-border);
+    background: var(--about-bg);
+    color: var(--about-text);
+  }
+
+  &__container {
+    width: min(1080px, calc(100% - 80px));
+    margin-inline: auto;
+  }
+
+  &__intro {
+    display: flex;
+    max-width: 800px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(52px, 5.625vw, 72px);
+    font-weight: 300;
+    line-height: 1.15;
+  }
+
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  &__copy p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.39;
+  }
+
+  &__copy .wp-block-buttons {
+    margin: 0;
+  }
+
+  &__copy .wp-block-button__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 16px;
+    background: var(--about-cta-bg);
+    color: var(--about-cta-text);
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  &__copy .wp-block-button__link::after {
+    font-family: 'Geist', var(--font-family-base);
+    font-size: 16px;
+    font-weight: 400;
+    content: '→';
+  }
+
+  &__technologies {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 60px;
+  }
+
+  &__technologies-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.39;
+    color:#df1e26;
+  }
+
+  &__technology-viewport {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  }
+
+  &__technology-track {
+    display: flex;
+    width: max-content;
+    gap: 16px;
+    animation: about-technologies-scroll 32s linear infinite;
+  }
+
+  &__technology-viewport:is(:hover, :focus-within) &__technology-track {
+    animation-play-state: paused;
+  }
+
+  &__technology-group {
+    display: flex;
+    flex: none;
+    gap: 16px;
+  }
+
+  &__technology {
+    display: flex;
+    height: 56px;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border: 1px solid var(--about-border);
+    border-radius: 16px;
+    background: var(--about-surface);
+    color: var(--about-muted);
+  }
+
+  &__technology--linked {
+    text-decoration: none;
+    transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+
+    &:is(:hover, :focus-visible) {
+      border-color: #df1e26;
+      color: var(--about-text);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #df1e26;
+      outline-offset: 0px;
+    }
+  }
+
+  &__technology-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    object-fit: contain;
+  }
+
+  &__technology-name {
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  &__leadership {
+    padding-block: 72px 80px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--about-border);
+    background: var(--about-leadership-bg);
+    color: var(--about-text);
+  }
+
+  &__leadership-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  &__leadership-title {
+    margin: 0;
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  &__leadership-intro {
+    margin: 0;
+    color: var(--about-muted);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  &__leadership-viewport {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px 20px;
+    width: 100%;
+    padding-bottom: 2px;
+  }
+
+  &__leader {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__leader-photo-wrap {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--about-leader-photo-bg);
+  }
+
+  &__leader-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  &__leader-details {
+    display: flex;
+    min-height: 58px;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__leader-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  &__leader-designation {
+    margin: 0;
+    color: var(--about-muted);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  &__quote {
+    padding: 120px max(40px, calc((100vw - 1080px) / 2));
+    border-block: 1px solid var(--about-border);
+    background: var(--about-quote-bg);
+    color: var(--about-text);
+  }
+
+  &__quote-content {
+    width: min(100%, 1080px);
+    margin-inline: auto;
+  }
+
+  &__quote .wp-block-quote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  &__quote .wp-block-quote p {
+    margin: 0;
+    font-family: 'Inter', 'Geist', var(--font-family-base);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  &__quote .wp-block-quote cite {
+    display: block;
+    margin-top: 40px;
+    color: var(--about-muted);
+    font-family: 'Inter', 'Geist', var(--font-family-base);
+    font-size: 18px;
+    font-style: normal;
+    line-height: 1.4;
+  }
+}
+
+.theme-dark .about-page {
+  --about-bg: #111318;
+  --about-surface: #1b1e24;
+  --about-border: rgb(255 255 255 / 14%);
+  --about-text: #f7f8fb;
+  --about-muted: #b3bbc7;
+  --about-cta-bg: #fff;
+  --about-cta-text: #080c14;
+  --about-leadership-bg: #111318;
+  --about-leader-photo-bg: #1b1e24;
+  --about-quote-bg: #000;
+
+  .about-page__technology-icon {
+    filter: none;
+  }
+}
+
+@keyframes about-technologies-scroll {
+  to {
+    transform: translateX(calc(-50% - 8px));
+  }
+}
+
+@media (max-width: ($breakpoint-md - 0.01rem)) {
+  .about-page {
+    &__hero {
+      min-height: auto;
+      padding-block: 56px;
+    }
+
+    &__container {
+      width: calc(100% - 40px);
+    }
+
+    &__intro {
+      gap: 28px;
+    }
+
+    &__title {
+      font-size: 48px;
+    }
+
+    &__technologies {
+      margin-top: 48px;
+    }
+
+    &__technologies-title {
+      font-size: 21px;
+    }
+
+    &__leadership {
+      padding-block: 56px 64px;
+    }
+
+    &__leadership-header {
+      margin-bottom: 24px;
+    }
+
+    &__leadership-viewport {
+      overflow: visible;
+    }
+
+    &__leadership-grid {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      width: 100%;
+    }
+
+    &__leader {
+      min-width: 0;
+    }
+
+    &__leader-photo-wrap {
+      height: auto;
+      aspect-ratio: 10 / 11;
+    }
+
+    &__quote {
+      padding: 64px 20px;
+    }
+
+    &__quote .wp-block-quote p {
+      font-size: clamp(26px, 6.7vw, 36px);
+    }
+
+    &__quote .wp-block-quote cite {
+      margin-top: 28px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__technology-track {
+    animation-play-state: paused;
+  }
+}

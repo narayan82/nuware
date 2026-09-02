@@ -2,7 +2,7 @@ export function initContactOverlay() {
   const dialog = document.querySelector('[data-contact-overlay]');
   if (!dialog || typeof dialog.showModal !== 'function') return;
   const triggers = document.querySelectorAll(
-    '.site-header .menu-item--contact > a, .site-footer__cta, .hero-answer__cta'
+    '.site-header .menu-item--contact > a, .site-footer__cta, .hero-answer__cta, [data-contact-trigger]'
   );
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   let returnFocus, closeTimer, openFrame, closing = false;

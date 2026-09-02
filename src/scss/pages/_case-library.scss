@@ -1,0 +1,77 @@
+// BEM: .case-library block, __elements and --modifiers; shallow nesting.
+@use '../base/variables' as *;
+
+.case-library {
+  --library-bg: #fff;
+  --library-surface: #f4f7fb;
+  --library-text: #172033;
+  --library-muted: #565f70;
+  --library-border: #e2e2e2;
+  --library-accent: #df1e26;
+  padding-block: 72px 96px;
+  background: var(--library-bg);
+  color: var(--library-text);
+  border-bottom: 1px solid var(--library-border);
+  font-family: "Geist", var(--font-family-base);
+
+  &__container { width: min(1280px, calc(100% - 80px)); margin-inline: auto; }
+  &__header { margin-bottom: 48px; }
+  &__eyebrow { margin: 0 0 16px; color: var(--library-accent); font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  &__title { margin: 0; font-size: clamp(40px, 5vw, 72px); line-height: 1.1; font-weight: 600; letter-spacing: -.03em; }
+  &__filters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: end; }
+  &__field { min-width: 0; }
+  &__field label { display: block; margin-bottom: 10px; font-size: 14px; font-weight: 600; }
+  &__field input, &__field select { width: 100%; min-height: 54px; padding: 12px 16px; border: 1px solid var(--library-border); border-radius: 16px; background: var(--library-bg); color: var(--library-text); font: inherit; font-size: 16px; }
+  &__field input::placeholder { color: var(--library-muted); opacity: 1; }
+  &__results { display: flex; justify-content: space-between; gap: 16px; margin-block: 24px 32px; font-size: 14px; color: var(--library-muted); }
+  &__results p { margin: 0; }
+  &__results a, &__empty a { color: var(--library-text); text-underline-offset: 4px; }
+  &__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  &__card { position: relative; display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--library-border); border-radius: 20px; background: var(--library-surface); overflow: hidden; transition: border-color .2s ease; }
+  &__card:hover, &__card:focus-within { border-color: var(--library-accent); }
+  &__image { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+  &__image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  &__card-body { display: flex; flex: 1; flex-direction: column; padding: 20px 20px 18px; }
+  &__categories { position: absolute; left: 14px; bottom: 14px; max-width: calc(100% - 28px); margin: 0; padding: 6px 10px; border-radius: 8px; background: var(--library-bg); color: var(--library-accent); font-size: 11px; line-height: 1.5; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+  &__card-title { margin: 0 0 12px; font-size: clamp(16px, 2vw, 18px); line-height: 1.3; font-weight: 600; overflow-wrap: break-word; }
+  &__card-title a { color: inherit; text-decoration: none; }
+  &__card-title a::after { position: absolute; inset: 0; content: ''; }
+  &__excerpt { margin: 0; color: var(--library-muted); font-size: 16px; line-height: 1.55; }
+  &__empty { padding: 64px 24px; text-align: center; background: var(--library-surface); border-radius: 20px; }
+  &__empty h2 { margin: 0 0 12px; }
+  &__empty p { margin: 0 0 24px; color: var(--library-muted); }
+  :is(a, button, input, select):focus-visible { outline: 2px solid var(--library-accent); outline-offset: 4px; }
+}
+
+.theme-dark .case-library {
+  --library-bg: #111318;
+  --library-surface: #17191e;
+  --library-text: #f7f8fb;
+  --library-muted: #b3bbc7;
+  --library-border: rgb(255 255 255 / 14%);
+  --library-accent: #ff4d58;
+  &__field { color-scheme: dark; }
+}
+
+@media (max-width: 64rem) {
+  .case-library {
+    &__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    &__filters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    &__field--search { grid-column: 1 / -1; }
+  }
+}
+
+@media (max-width: ($breakpoint-md - .01rem)) {
+  .case-library {
+    padding-block: 40px 56px;
+    &__container { width: calc(100% - 40px); }
+    &__header { margin-bottom: 32px; }
+    &__filters { gap: 16px; }
+    &__grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    &__card-body { padding: 18px 18px 16px; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-library__card { transition: none; }
+}
