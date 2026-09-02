@@ -29,7 +29,9 @@
     align-items: center;
     padding-block: 88px;
     border-bottom: 1px solid var(--careers-border);
-    background: #111318;
+    background:
+      linear-gradient(rgb(0 0 0 / 8%), rgb(0 0 0 / 8%)),
+      #050806 url('../images/careers/vga.jpg') center / cover no-repeat;
     color: #f7f8fb;
   }
 
@@ -41,14 +43,15 @@
   &__animated-title {
     min-height: 2.2em;
     margin: 0 0 30px;
-    color: #fff;
+    color: #39ff6a;
     font-family: 'Andale Mono', 'Lucida Console', 'Courier New', monospace;
     font-size: clamp(36px, 3.45vw, 44px);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.045em;
-    max-width: 600px;
-    text-shadow: 0 0 8px rgb(255 255 255 / 16%);
+    width: 100%;
+    max-width: none;
+    text-shadow: 0 0 8px rgb(57 255 106 / 32%);
     -webkit-font-smoothing: none;
   }
 
@@ -169,7 +172,22 @@
   }
 
   .careers-process-cards > .wp-block-column {
+    position: relative;
     min-width: 0;
+  }
+
+  .careers-process-cards > .wp-block-column:not(:last-child)::after {
+    position: absolute;
+    top: 50%;
+    right: -13px;
+    z-index: 2;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid var(--careers-red);
+    border-right: 2px solid var(--careers-red);
+    content: '';
+    transform: translate(50%, -50%) rotate(45deg);
+    pointer-events: none;
   }
 
   .careers-process-card {
@@ -684,8 +702,15 @@ html.position-drawer-open {
 
     .careers-process-cards.wp-block-columns {
       grid-template-columns: minmax(0, 1fr);
-      gap: 16px;
+      gap: 44px;
       margin-top: 12px;
+    }
+
+    .careers-process-cards > .wp-block-column:not(:last-child)::after {
+      top: auto;
+      right: 50%;
+      bottom: -22px;
+      transform: translate(50%, 50%) rotate(135deg);
     }
 
     .careers-process-card {

@@ -6,9 +6,9 @@
 get_header();
 
 $career_lines = array(
-	'We coded when Undo went only one step back.',
-	'We coded when a hard drive held less than today’s RAM.',
-	'We debugged before instant answers existed.',
+	'We coded when Undo went only one step back. ¯\_(ツ)_/¯',
+	'We coded when a hard drive held less than today’s RAM. (•‿•)',
+	'We debugged before instant answers existed. ^_^',
 );
 
 $career_hero_blocks    = array();
