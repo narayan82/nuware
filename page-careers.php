@@ -7,8 +7,9 @@ get_header();
 
 $career_lines = array(
 	'We coded when Undo went only one step back. ¯\_(ツ)_/¯',
-	'We coded when a hard drive held less than today’s RAM. (•‿•)',
-	'We debugged before instant answers existed. ^_^',
+	'We coded when the internet ran at 56 Kbps. (•‿•)',
+	'We shipped entire applications on a 512KB floppy disk. ^_^',
+	'We built software when 1MB of RAM felt generous. (¬‿¬)',
 );
 
 $career_hero_blocks    = array();

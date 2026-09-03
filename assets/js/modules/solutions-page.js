@@ -61,6 +61,7 @@ export function initSolutionsPage() {
     const studyPanels = [...page.querySelectorAll('[data-solutions-studies-panel]')];
     const tabs = [...root.querySelectorAll('[data-solutions-tab]')];
     const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')));
+    let mobileSelect;
 
     function select(index, updateURL = false, focus = false) {
       tabs.forEach((tab, tabIndex) => {
@@ -69,6 +70,7 @@ export function initSolutionsPage() {
         tab.tabIndex = selected ? 0 : -1;
         if (panels[tabIndex]) panels[tabIndex].hidden = !selected;
       });
+      if (mobileSelect) mobileSelect.value = String(index);
 
       studyPanels.forEach((section) => {
         section.hidden = section.dataset.solutionsStudiesPanel !== tabs[index].dataset.solutionsTab;
@@ -81,6 +83,20 @@ export function initSolutionsPage() {
         history.pushState(null, '', new URL(`${tabs[index].dataset.solutionsTab}/`, baseURL));
       }
     }
+
+    const mobileSelectWrap = document.createElement('div');
+    mobileSelectWrap.className = 'solutions-page__mobile-tab-select';
+    mobileSelect = document.createElement('select');
+    mobileSelect.setAttribute('aria-label', 'Choose a solution');
+    tabs.forEach((tab, index) => {
+      const option = document.createElement('option');
+      option.value = String(index);
+      option.textContent = tab.textContent.trim();
+      mobileSelect.append(option);
+    });
+    mobileSelect.addEventListener('change', () => select(Number(mobileSelect.value), true));
+    mobileSelectWrap.append(mobileSelect);
+    root.before(mobileSelectWrap);
 
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => select(index, true));

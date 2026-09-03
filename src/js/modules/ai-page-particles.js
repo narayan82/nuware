@@ -24,7 +24,7 @@ export function initAiPageParticles(hero) {
   if (!host || typeof window.particlesJS !== 'function') return { setTab() {} };
   const mobile = matchMedia('(max-width: 47.99rem)');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  const palette = () => AI_TAB_COLOURS[document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'];
+  const palette = () => AI_TAB_COLOURS.dark;
   const rgb = (hex) => ({ r: parseInt(hex.slice(1, 3), 16), g: parseInt(hex.slice(3, 5), 16), b: parseInt(hex.slice(5, 7), 16) });
   const first = AI_TAB_PARTICLES[0];
   window.particlesJS(host.id, {

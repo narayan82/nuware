@@ -1,5 +1,5 @@
 // AI-page presets are independent from the homepage carousel.
-import { initAiPageParticles } from './ai-page-particles.js?v=2';
+import { initAiPageParticles } from './ai-page-particles.js?v=3';
 
 export function initAiPage() {
   const hero = document.querySelector('[data-ai-hero]');
@@ -47,6 +47,7 @@ export function initAiPage() {
   document.querySelectorAll('[data-ai-tabs]').forEach((root) => {
     const tabs = [...root.querySelectorAll('[data-ai-tab]')];
     const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')));
+    let mobileSelect;
     function select(index, writeURL = false, focus = false) {
       particles.setTab(index);
       tabs.forEach((tab, i) => {
@@ -54,6 +55,7 @@ export function initAiPage() {
         tab.tabIndex = i === index ? 0 : -1;
         if (panels[i]) panels[i].hidden = i !== index;
       });
+      if (mobileSelect) mobileSelect.value = String(index);
       if (focus) tabs[index].focus({ preventScroll: true });
       if (writeURL) {
         const baseURL = page?.dataset.aiBaseUrl || new URL('/ai/', location.origin).href;
@@ -70,6 +72,21 @@ export function initAiPage() {
       }
       select(Math.max(0, tabs.findIndex((tab) => tab.dataset.aiTab === slug)));
     }
+
+    const mobileSelectWrap = document.createElement('div');
+    mobileSelectWrap.className = 'ai-page__mobile-tab-select';
+    mobileSelect = document.createElement('select');
+    mobileSelect.setAttribute('aria-label', 'Choose an AI topic');
+    tabs.forEach((tab, index) => {
+      const option = document.createElement('option');
+      option.value = String(index);
+      option.textContent = tab.textContent.trim();
+      mobileSelect.append(option);
+    });
+    mobileSelect.addEventListener('change', () => select(Number(mobileSelect.value), true));
+    mobileSelectWrap.append(mobileSelect);
+    root.before(mobileSelectWrap);
+
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => select(index, true));
       tab.addEventListener('keydown', (event) => {

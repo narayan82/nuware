@@ -16,11 +16,11 @@ if (document.querySelector('[data-application-overlay]')) {
 }
 
 if (document.querySelector('[data-ai-hero]')) {
-  import('./modules/ai-page.js?v=7').then(({ initAiPage }) => initAiPage());
+  import('./modules/ai-page.js?v=9').then(({ initAiPage }) => initAiPage());
 }
 
 if (document.querySelector('[data-solutions-tabs]')) {
-  import('./modules/solutions-page.js?v=6').then(({ initSolutionsPage }) => initSolutionsPage());
+  import('./modules/solutions-page.js?v=7').then(({ initSolutionsPage }) => initSolutionsPage());
 }
 
 if (document.querySelector('[data-careers-typing]')) {
@@ -29,6 +29,10 @@ if (document.querySelector('[data-careers-typing]')) {
 
 if (document.querySelector('[data-careers-positions]')) {
   import('./modules/careers-positions.js?v=1').then(({ initCareersPositions }) => initCareersPositions());
+}
+
+if (document.querySelector('[data-world-timeline-light]')) {
+  import('./modules/world-timeline-light.js?v=6').then(({ initWorldTimelineLight }) => initWorldTimelineLight());
 }
 
 import('./modules/hero-answer.js?v=1').then(({ initHeroAnswer }) => initHeroAnswer());
@@ -46,7 +50,7 @@ import('./modules/hero-binary-title.js').then(({ initHeroBinaryTitle }) => {
 });
 
 if (document.querySelector('[data-hero-particles]')) {
-  import('./modules/hero-particles.js?v=3').then(({ initHeroParticles }) => initHeroParticles());
+  import('./modules/hero-particles.js?v=17').then(({ initHeroParticles }) => initHeroParticles());
 } else {
   import('./modules/particle-text.js?v=6').then(({ initParticleText }) => initParticleText());
 }

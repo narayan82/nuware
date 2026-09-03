@@ -2,6 +2,8 @@ import { HERO_SHAPES } from './hero-particle-shapes.js';
 
 // Hero-only controls. These never change the AI carousel's particles.js instance.
 const SETTINGS = { fade: 800, gather: 3000, stagger: 1040, drift: 7, maxParticles: 3400 };
+const INTRO = { typing: 1700, zoom: 1600, lineDigits: 28 };
+INTRO.total = INTRO.typing + INTRO.zoom;
 const HOVER = { radius: 100, distance: 24, response: 10 };
 const clamp = (n, min, max) => Math.max(min, Math.min(n, max));
 const ease = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -29,6 +31,7 @@ export async function initHeroParticles() {
   const ctx = engine.canvas.ctx;
   let width, height, glyphSize, paths, elapsed = 0, last = performance.now();
   let visible = true, formed = reduced.matches, colors = [], disposed = false;
+  const typingCursor = { visible: false, x: 0, y: 0, size: 0 };
   const pointer = { active: false, x: 0, y: 0 };
   const clearPointer = () => { pointer.active = false; };
   const trackPointer = (event) => {
@@ -109,14 +112,34 @@ export async function initHeroParticles() {
         targetX: target.x, targetY: target.y, letter: target.letter,
         vx: Math.cos(angle) * SETTINGS.drift, vy: Math.sin(angle) * SETTINGS.drift,
         digit: index % 2, delay: Math.random() * SETTINGS.stagger,
+        introIndex: index,
+        introSlot: index % INTRO.lineDigits - (INTRO.lineDigits - 1) / 2,
+        introDigit: index % 2,
+        renderDigit: index % 2,
+        renderSize: glyphSize, alpha: reduced.matches ? 1 : 0,
         hoverX: 0, hoverY: 0,
       });
       particle.startX = particle.x; particle.startY = particle.y;
       particle.driftX = particle.vx; particle.driftY = particle.vy;
       particle.draw = () => {
-        ctx.globalAlpha = reduced.matches ? 1 : clamp(elapsed / SETTINGS.fade, 0, 1);
-        ctx.fillStyle = colors[particle.digit];
-        ctx.fillText(String(particle.digit), particle.x, particle.y);
+        if (particle.alpha > 0) {
+          ctx.globalAlpha = particle.alpha;
+          ctx.fillStyle = colors[particle.renderDigit];
+          ctx.font = particle.useVgaFont
+            ? `600 ${particle.renderSize}px Geist, Arial, sans-serif`
+            : `600 ${particle.renderSize}px Geist, Arial, sans-serif`;
+          ctx.fillText(String(particle.renderDigit), particle.x, particle.y);
+        }
+        if (index === engine.particles.array.length - 1 && typingCursor.visible) {
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = colors[0];
+          ctx.fillRect(
+            typingCursor.x,
+            typingCursor.y - typingCursor.size * 0.42,
+            Math.max(3, typingCursor.size * 0.1),
+            typingCursor.size * 0.84
+          );
+        }
       };
       return particle;
     });
@@ -134,6 +157,27 @@ export async function initHeroParticles() {
       hero.classList.add('particle-hero--ready');
     }
     const particles = engine.particles.array;
+    const introActive = !reduced.matches && !formed && elapsed < INTRO.total;
+    const postIntroElapsed = Math.max(0, elapsed - INTRO.total);
+    const phaseElapsed = SETTINGS.fade + postIntroElapsed;
+    const introCount = Math.min(INTRO.lineDigits, particles.length);
+    const centerX = width / 2;
+    const centerY = height / 2;
+    const lineSize = clamp(width / 21, 34, 62);
+    const introSize = lineSize * 3;
+    const introStep = introSize * 0.75;
+    const typingActive = introActive && elapsed < INTRO.typing;
+    const typingProgress = typingActive ? clamp(elapsed / INTRO.typing, 0, 1) : 1;
+    const typingEaseIn = typingProgress * typingProgress * typingProgress;
+    const typedDigits = typingActive
+      ? Math.min(introCount, Math.floor(typingEaseIn * (introCount + 1)))
+      : introCount;
+    typingCursor.visible = typingActive && elapsed % 650 < 390;
+    typingCursor.x = typedDigits
+      ? centerX + (typedDigits - 1) * introStep / 2 + introStep * 0.55
+      : centerX;
+    typingCursor.y = centerY;
+    typingCursor.size = introSize;
     for (const p of particles) {
       const path = paths[p.letter];
       // Keep targets moving even during gathering: early arrivals never stop.
@@ -145,13 +189,42 @@ export async function initHeroParticles() {
         if (inside(path, x, y)) { p.targetX = x; p.targetY = y; }
         else { p.vx *= -1; p.vy *= -1; }
       }
-      if (!formed) {
-        const progress = clamp((elapsed - SETTINGS.fade - p.delay) / SETTINGS.gather, 0, 1);
+      if (introActive) {
+        p.renderDigit = p.introDigit;
+        p.useVgaFont = elapsed < INTRO.typing;
+        const lineX = centerX + p.introSlot * introStep;
+
+        if (elapsed < INTRO.typing) {
+          p.alpha = p.introIndex < typedDigits ? 1 : 0;
+          p.renderSize = introSize;
+          p.x = centerX + (p.introIndex - (typedDigits - 1) / 2) * introStep;
+          p.y = centerY;
+        } else {
+          const progress = clamp((elapsed - INTRO.typing) / INTRO.zoom, 0, 1);
+          const blend = ease(progress);
+          const reveal = p.introIndex < introCount
+            ? 1
+            : clamp(progress * 1.35 - (p.introIndex / Math.max(1, particles.length)) * 0.35, 0, 1);
+          p.alpha = reveal;
+          p.renderSize = introSize + (glyphSize - introSize) * blend;
+          p.x = lineX + (p.startX - lineX) * blend;
+          p.y = centerY + (p.startY - centerY) * blend;
+        }
+      } else if (!formed) {
+        p.renderDigit = p.digit;
+        p.useVgaFont = false;
+        const progress = clamp((phaseElapsed - SETTINGS.fade - p.delay) / SETTINGS.gather, 0, 1);
         const blend = ease(progress);
-        const drift = elapsed / 1000;
+        const drift = postIntroElapsed / 1000;
+        p.alpha = clamp(phaseElapsed / SETTINGS.fade, 0, 1);
+        p.renderSize = glyphSize;
         p.x = (p.startX + p.driftX * drift) * (1 - blend) + p.targetX * blend;
         p.y = (p.startY + p.driftY * drift) * (1 - blend) + p.targetY * blend;
       } else {
+        p.renderDigit = p.digit;
+        p.useVgaFont = false;
+        p.alpha = 1;
+        p.renderSize = glyphSize;
         p.x = p.targetX; p.y = p.targetY;
       }
       // Displace only the rendered position; moving letter targets stay intact.
@@ -172,14 +245,13 @@ export async function initHeroParticles() {
       p.x += p.hoverX;
       p.y += p.hoverY;
     }
-    if (!formed && elapsed >= SETTINGS.fade + SETTINGS.gather + SETTINGS.stagger) {
+    if (!formed && elapsed >= INTRO.total + SETTINGS.gather + SETTINGS.stagger) {
       formed = true;
       hero.classList.add('particle-hero--ready');
     }
     // Sparse abstract connections fade away as the binary resolves into the word.
-    const lineAlpha = 0.1 * clamp(elapsed / SETTINGS.fade, 0, 1) *
-      (1 - clamp((elapsed - SETTINGS.fade) / SETTINGS.gather, 0, 1));
-    if (!formed && lineAlpha > 0) {
+    const lineAlpha = 0.1 * (1 - clamp(postIntroElapsed / SETTINGS.gather, 0, 1));
+    if (!introActive && !formed && lineAlpha > 0) {
       const grid = new Map();
       ctx.strokeStyle = colors[1]; ctx.globalAlpha = lineAlpha; ctx.lineWidth = 0.5;
       particles.forEach(p => {
@@ -191,7 +263,6 @@ export async function initHeroParticles() {
         cell.push(p); grid.set(key, cell);
       });
     }
-    ctx.font = `600 ${glyphSize}px Geist, Arial, sans-serif`;
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.globalAlpha = 1;
   };
 

@@ -33,10 +33,12 @@
 
 .site-header__inner {
   display: flex;
+  width: min(1080px, calc(100% - 80px));
+  margin-inline: auto;
   align-items: center;
   justify-content: space-between;
   min-height: 80px;
-  padding: 20px clamp(32px, 6.95vw, 100px);
+  padding: 20px 0;
 }
 
 .site-header__brand,
@@ -361,6 +363,7 @@
 
 @media (max-width: ($breakpoint-md - 0.01rem)) {
   .site-header__inner {
+    width: 100%;
     min-height: 72px;
     padding: 16px 20px;
   }

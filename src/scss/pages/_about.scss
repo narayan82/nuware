@@ -15,6 +15,14 @@
   font-family: 'Geist', var(--font-family-base);
 
   &__hero {
+    --about-bg: #111318;
+    --about-surface: #1b1e24;
+    --about-border: rgb(255 255 255 / 14%);
+    --about-text: #f7f8fb;
+    --about-muted: #b3bbc7;
+    --about-cta-bg: #fff;
+    --about-cta-text: #080c14;
+
     display: flex;
     min-height: 600px;
     align-items: center;
@@ -159,6 +167,10 @@
     height: 24px;
     filter: invert(1);
     object-fit: contain;
+  }
+
+  &__hero &__technology-icon {
+    filter: none;
   }
 
   &__technology-name {

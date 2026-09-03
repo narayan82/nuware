@@ -12,7 +12,7 @@
   background: var(--footer-background);
   color: var(--footer-text);
 
-  &__inner { max-width: 1240px; margin-inline: auto; }
+  &__inner { width: min(1080px, 100%); margin-inline: auto; }
   &__columns { display: grid; grid-template-columns: 400fr 340fr 340fr; gap: clamp(32px, 4vw, 80px); }
   &__invitation { max-width: 400px; }
   &__title { margin: 0 0 12px; color: #df1e26; font-size: 44px; font-weight: 700; line-height: 1.1; letter-spacing: -1.32px; }

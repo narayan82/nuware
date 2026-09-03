@@ -162,6 +162,7 @@
 			aria-label="<?php esc_attr_e( 'NuWare statistics', 'nuware' ); ?>"
 		>
 			<script class="stat-counter__data" type="application/json"><?php echo wp_json_encode( $nuware_stat_rows, JSON_HEX_TAG | JSON_HEX_AMP ); ?></script>
+			<h2 class="stat-counter__title"><?php esc_html_e( 'NuWare in numbers.', 'nuware' ); ?></h2>
 			<div class="stat-counter__row">
 				<button class="stat-counter__button" type="button" data-stat-previous aria-label="<?php esc_attr_e( 'Show previous statistic', 'nuware' ); ?>">
 					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/stat-minus.svg' ); ?>" alt="" width="20" height="20">
@@ -269,6 +270,8 @@
 						$nuware_world_icon_url = is_numeric( $nuware_world_icon )
 							? wp_get_attachment_url( (int) $nuware_world_icon )
 							: ( is_string( $nuware_world_icon ) ? $nuware_world_icon : '' );
+						$nuware_world_intro_title = function_exists( 'get_field' ) ? trim( (string) get_field( 'title', $nuware_world_page->ID ) ) : '';
+						$nuware_world_card_description = $nuware_world_intro_title ?: $nuware_first_paragraph( $nuware_world_page->post_content );
 						?>
 						<article class="our-worlds__card<?php echo 0 === $nuware_world_index ? ' our-worlds__card--active' : ''; ?>" data-world-card="<?php echo esc_attr( $nuware_world_index ); ?>">
 							<div class="our-worlds__visual" aria-hidden="true">
@@ -279,7 +282,7 @@
 							</div>
 							<div class="our-worlds__content">
 								<h3 class="our-worlds__card-title"><?php echo esc_html( get_the_title( $nuware_world_page ) ); ?></h3>
-								<p class="our-worlds__description"><?php echo esc_html( $nuware_first_paragraph( $nuware_world_page->post_content ) ); ?></p>
+								<p class="our-worlds__description"><?php echo esc_html( $nuware_world_card_description ); ?></p>
 								<a class="our-worlds__link" href="<?php echo esc_url( get_permalink( $nuware_world_page ) ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Explore %s', 'nuware' ), get_the_title( $nuware_world_page ) ) ); ?>">→</a>
 							</div>
 						</article>

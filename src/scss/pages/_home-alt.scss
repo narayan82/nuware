@@ -3,15 +3,15 @@
 
 .particle-hero {
   --particle-hero-lift: clamp(80px, 10vh, 140px);
-  --particle-hero-background: #f4f7fb;
-  --particle-hero-text: #172033;
-  --particle-hero-muted: rgb(23 32 51 / 72%);
-  --particle-hero-field: #ffffff;
-  --particle-hero-field-border: rgb(23 32 51 / 14%);
-  --particle-hero-placeholder: rgb(23 32 51 / 52%);
-  --particle-hero-focus: #df1e26;
-  --particle-zero-color: #101828;
-  --particle-one-color: #9aa3b1;
+  --particle-hero-background: #111318;
+  --particle-hero-text: #f7f8fb;
+  --particle-hero-muted: rgb(247 248 251 / 76%);
+  --particle-hero-field: rgb(255 255 255 / 8%);
+  --particle-hero-field-border: rgb(255 255 255 / 14%);
+  --particle-hero-placeholder: rgb(255 255 255 / 52%);
+  --particle-hero-focus: #ffffff;
+  --particle-zero-color: #ffffff;
+  --particle-one-color: #7d8796;
 
   position: relative;
   height: calc(100svh - 221px);
@@ -20,7 +20,7 @@
   background: var(--particle-hero-background);
   color: var(--particle-hero-text);
   padding-top:40px;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 1px solid rgb(255 255 255 / 14%);
 }
 
 .theme-dark .particle-hero {
@@ -185,11 +185,6 @@
     font-size: 15px;
   }
 
-  .particle-hero__content {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 }
 
 // BEM convention: block `.our-worlds`, element `.our-worlds__card`, modifier reserved for future variants.
@@ -488,11 +483,22 @@
   display: flex;
   padding: 80px 20px;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
+  gap: 28px;
   background: #f4f7fb;
   color: #18181b;
   outline: 0;
   border-bottom: 1px solid #e2e2e2;
+}
+
+.stat-counter__title {
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  font-size: clamp(30px, 2.4vw, 42px);
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .stat-counter:focus-visible {
