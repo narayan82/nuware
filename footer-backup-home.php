@@ -45,6 +45,7 @@ $nuware_terms_url = $nuware_terms_page instanceof WP_Post && 'publish' === $nuwa
 				<div class="site-footer__office">
 					<h3 class="site-footer__office-title">NuWare Systems LLP</h3>
 					<address class="site-footer__address">2/2, 1st Floor, Embassy Icon<br>Annexe, Infantry Road<br>Opposite Coffee Board<br>Bangalore – 560001</address>
+					<address class="site-footer__address">1st Floor, 60, 1st Cross 4th Main, HAL III Stage,<br>Bengaluru, Karnataka, India - 560075</address>
 					<div class="site-footer__contact">
 						<p><strong><?php esc_html_e( 'Tel:', 'nuware' ); ?></strong> <a href="tel:+918067166300">+91 - 80671 66300</a>/<a href="tel:+918067166301" aria-label="<?php esc_attr_e( 'Call +91 80671 66301', 'nuware' ); ?>">301</a></p>
 					</div>

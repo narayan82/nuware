@@ -113,3 +113,14 @@ dropdownLabels.forEach((dropdownLabel) => {
     dropdownLabel.setAttribute('aria-expanded', String(isOpen));
   });
 });
+
+// Measure the actual header edge, including the WordPress admin toolbar.
+if (siteHeader) {
+  const syncPageTabsTop = () => {
+    document.documentElement.style.setProperty('--page-tabs-top', `${siteHeader.getBoundingClientRect().bottom}px`);
+  };
+  new ResizeObserver(syncPageTabsTop).observe(siteHeader);
+  window.addEventListener('scroll', syncPageTabsTop, { passive: true });
+  window.addEventListener('resize', syncPageTabsTop);
+  syncPageTabsTop();
+}

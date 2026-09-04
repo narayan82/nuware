@@ -1,0 +1,83 @@
+// Shared surface, divider and sizing for all page navigation tabs.
+html {
+  --page-tabs-bg: #fff;
+  --page-tabs-text: #172033;
+  --page-tabs-border: #e2e2e2;
+  --page-tabs-accent: #df1e26;
+}
+html.theme-dark {
+  --page-tabs-bg: #111318;
+  --page-tabs-text: #f7f8fb;
+  --page-tabs-border: rgb(255 255 255 / 14%);
+  --page-tabs-accent: #ff4d58;
+}
+
+html :is(.ai-page__content, .solutions-page__content, .world-page__content) .wp-block-tab-list {
+  min-height: 60px;
+  gap: 0;
+  border-bottom: 0;
+  background: var(--page-tabs-bg);
+  box-shadow: 0 0 0 100vmax var(--page-tabs-bg);
+  clip-path: inset(0 -100vmax);
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    z-index: 0;
+    width: 100vw;
+    height: 1px;
+    background: var(--page-tabs-border);
+    transform: translateX(-50%);
+    content: '';
+    pointer-events: none;
+  }
+
+  [role='tab'] {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 60px;
+    padding: 16px 14px;
+    color: var(--page-tabs-text);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  [role='tab'][aria-selected='true'] {
+    color: var(--page-tabs-accent);
+    border-bottom-color: var(--page-tabs-accent);
+    font-weight: 500;
+  }
+}
+
+html :is(.ai-page__content, .solutions-page__content) .wp-block-tab-list--sticky,
+html .world-page__content .wp-block-tab-list {
+  top: var(--page-tabs-top, 81px);
+  z-index: 99;
+}
+
+// Keep the particle artwork in its hero when the navigation sticks.
+.ai-page__hero--tabs-sticky .ai-page__particles {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  height: auto;
+  clip-path: none;
+}
+.ai-page__hero--tabs-sticky { isolation: isolate; }
+
+html :is(.ai-page__mobile-tab-select, .solutions-page__mobile-tab-select, .world-page__mobile-tab-select) {
+  select {
+    background: var(--page-tabs-bg);
+    color: var(--page-tabs-text);
+    border-color: var(--page-tabs-border);
+  }
+  &::after { border-color: var(--page-tabs-text); }
+}
