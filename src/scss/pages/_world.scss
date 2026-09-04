@@ -7,6 +7,7 @@
   --world-muted: #565f70;
   --world-border: #e2e2e2;
   --world-red: #df1e26;
+  --world-tabs-bg: #fff;
 
   background: var(--world-bg);
   color: var(--world-text);
@@ -278,8 +279,8 @@
   padding: 0;
   margin: 0;
   border-bottom: 1px solid var(--world-border);
-  background: #fff;
-  box-shadow: 0 0 0 100vmax #fff;
+  background: var(--world-tabs-bg);
+  box-shadow: 0 0 0 100vmax var(--world-tabs-bg);
   clip-path: inset(0 -100vmax);
   list-style: none;
 }
@@ -368,6 +369,7 @@
   --world-text: #f7f8fb;
   --world-muted: #b3bbc7;
   --world-border: rgb(255 255 255 / 14%);
+  --world-tabs-bg: #111318;
 }
 
 @media (max-width: ($breakpoint-md - 0.01rem)) {

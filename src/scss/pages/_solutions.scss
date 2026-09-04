@@ -495,6 +495,17 @@
   --solutions-tabs-text: #f7f8fb;
 }
 
+// The tab bar sits outside the page flow when sticky, so set its dark surface
+// explicitly as well as through the page variables.
+html.theme-dark .solutions-page__content .wp-block-tab-list {
+  background: #111318;
+  box-shadow: 0 0 0 100vmax #111318;
+}
+
+html.theme-dark .solutions-page__content [role='tab'] {
+  color: #f7f8fb;
+}
+
 @media (max-width: ($breakpoint-md - 0.01rem)) {
   .solutions-page {
     &__container {

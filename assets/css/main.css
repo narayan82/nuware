@@ -3330,6 +3330,13 @@ body {
   --solutions-tabs-bg: #111318;
   --solutions-tabs-text: #f7f8fb;
 }
+html.theme-dark .solutions-page__content .wp-block-tab-list {
+  background: #111318;
+  box-shadow: 0 0 0 100vmax #111318;
+}
+html.theme-dark .solutions-page__content [role=tab] {
+  color: #f7f8fb;
+}
 
 @media (max-width: 47.99rem) {
   .solutions-page__container {
@@ -4466,6 +4473,7 @@ html.position-drawer-open {
   --world-muted: #565f70;
   --world-border: #e2e2e2;
   --world-red: #df1e26;
+  --world-tabs-bg: #fff;
   background: var(--world-bg);
   color: var(--world-text);
   font-family: "Geist", var(--font-family-base);
@@ -4749,8 +4757,8 @@ html.position-drawer-open {
   padding: 0;
   margin: 0;
   border-bottom: 1px solid var(--world-border);
-  background: #fff;
-  box-shadow: 0 0 0 100vmax #fff;
+  background: var(--world-tabs-bg);
+  box-shadow: 0 0 0 100vmax var(--world-tabs-bg);
   clip-path: inset(0 -100vmax);
   list-style: none;
 }
@@ -4837,6 +4845,7 @@ html.position-drawer-open {
   --world-text: #f7f8fb;
   --world-muted: #b3bbc7;
   --world-border: rgb(255 255 255 / 14%);
+  --world-tabs-bg: #111318;
 }
 
 @media (max-width: 47.99rem) {
