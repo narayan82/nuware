@@ -38,3 +38,19 @@ function nuware_favicon() {
 	$favicon_url = get_template_directory_uri() . '/assets/images/nu_favicon.svg';
 	printf( '<link rel="icon" type="image/svg+xml" sizes="any" href="%s">' . "\n", esc_url( $favicon_url ) );
 }
+
+/**
+ * Output the Google Analytics tag on every public page.
+ */
+function nuware_google_analytics_tag() {
+	?>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-P9PPMMJ2QQ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-P9PPMMJ2QQ');
+	</script>
+	<?php
+}
+add_action( 'wp_head', 'nuware_google_analytics_tag', 20 );

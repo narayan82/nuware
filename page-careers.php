@@ -33,12 +33,30 @@ while ( have_posts() ) {
 }
 
 $career_hero_content = apply_filters( 'the_content', serialize_blocks( $career_hero_blocks ) );
+$career_hero_tags    = new WP_HTML_Tag_Processor( $career_hero_content );
+
+while ( $career_hero_tags->next_tag( 'a' ) ) {
+	if ( $career_hero_tags->has_class( 'wp-block-button__link' ) ) {
+		$career_hero_tags->set_attribute( 'href', '#open-positions' );
+	}
+}
+
+$career_hero_content = $career_hero_tags->get_updated_html();
 $career_process      = $career_process_blocks
 	? apply_filters( 'the_content', serialize_blocks( $career_process_blocks ) )
 	: '';
 $career_benefits     = $career_benefits_blocks
 	? apply_filters( 'the_content', serialize_blocks( $career_benefits_blocks ) )
 	: '';
+
+// Replace legacy local-development asset hosts with the site's configured Home URL.
+if ( $career_benefits ) {
+	$career_benefits = preg_replace(
+		'#https?://nuware\.local#i',
+		untrailingslashit( home_url() ),
+		$career_benefits
+	);
+}
 
 $career_positions = new WP_Query(
 	array(

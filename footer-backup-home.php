@@ -8,10 +8,8 @@ foreach ( array( 'contact', 'contact-us', 'get-in-touch' ) as $nuware_contact_sl
 		break;
 	}
 }
-$nuware_privacy_url = get_privacy_policy_url();
-$nuware_terms_page = get_page_by_path( 'terms-of-service' );
-$nuware_terms_url = $nuware_terms_page instanceof WP_Post && 'publish' === $nuware_terms_page->post_status
-	? get_permalink( $nuware_terms_page ) : '';
+$nuware_privacy_url = home_url( '/privacy-policy/' );
+$nuware_terms_url   = home_url( '/terms/' );
 ?>
 <footer class="site-footer">
 	<div class="site-footer__inner">
