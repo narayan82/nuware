@@ -24,7 +24,7 @@ $nuware_terms_url = $nuware_terms_page instanceof WP_Post && 'publish' === $nuwa
 
 			<div class="site-footer__column">
 				<nav class="site-footer__socials" aria-label="<?php esc_attr_e( 'Social media', 'nuware' ); ?>">
-					<a class="site-footer__social" href="https://www.linkedin.com/company/nuware">
+					<a class="site-footer__social" href="https://www.linkedin.com/company/nuware" target="_blank" rel="noopener noreferrer">
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/footer-linkedin.svg' ); ?>" width="14" height="14" alt="" loading="lazy"> LinkedIn
 					</a>
 					<a class="site-footer__social" href="https://www.facebook.com/NuWareCo/">
