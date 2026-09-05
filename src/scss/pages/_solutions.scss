@@ -229,7 +229,7 @@
   }
 
   &__content [role='tabpanel'] > .wp-block-group.is-layout-grid > .wp-block-group p:has(strong) {
-    margin-bottom: 12px;
+    margin: 20px 0;
     color: var(--solutions-text);
     font-size: 18px;
   }
