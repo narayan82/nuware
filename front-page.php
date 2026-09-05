@@ -46,9 +46,14 @@
 				<span class="careers-cta__title-accent"><?php esc_html_e( 'With us.', 'nuware' ); ?></span>
 			</h2>
 			<p class="careers-cta__description"><?php esc_html_e( 'Join a team where your ideas matter, your work has impact, and there’s always something new to solve.', 'nuware' ); ?></p>
-			<a class="careers-cta__link" href="<?php echo esc_url( home_url( '/careers/' ) ); ?>">
-				<?php esc_html_e( 'Explore Open Positions', 'nuware' ); ?>
-			</a>
+			<div class="careers-cta__actions">
+				<a class="careers-cta__link" href="<?php echo esc_url( home_url( '/careers/' ) ); ?>">
+					<?php esc_html_e( 'Explore Open Positions', 'nuware' ); ?>
+				</a>
+				<a class="careers-cta__link careers-cta__link--secondary" href="<?php echo esc_url( home_url( '/about/#our-story' ) ); ?>">
+					<?php esc_html_e( 'Read our Story', 'nuware' ); ?>
+				</a>
+			</div>
 		</div>
 	</section>
 
@@ -123,62 +128,81 @@
 	</section>
 
 	<?php
-	$nuware_counter_page_id = get_queried_object_id();
+	$nuware_homepage_page_id = get_queried_object_id();
 
-	if ( ! $nuware_counter_page_id ) {
-		$nuware_counter_page = get_page_by_path( 'homepage' );
-		$nuware_counter_page_id = $nuware_counter_page instanceof WP_Post ? $nuware_counter_page->ID : 0;
+	if ( ! $nuware_homepage_page_id ) {
+		$nuware_homepage_page    = get_page_by_path( 'homepage' );
+		$nuware_homepage_page_id = $nuware_homepage_page instanceof WP_Post ? $nuware_homepage_page->ID : 0;
 	}
 
-	$nuware_stat_rows = function_exists( 'get_field' )
-		? get_field( 'counter', $nuware_counter_page_id )
-		: array();
-	$nuware_stat_rows = is_array( $nuware_stat_rows ) ? $nuware_stat_rows : array();
-
-	$nuware_stat_rows = array_values(
-		array_filter(
-			$nuware_stat_rows,
-			static function ( $nuware_stat_row ) {
-				return isset( $nuware_stat_row['value'] ) && is_numeric( $nuware_stat_row['value'] );
-			}
+	$nuware_case_study_terms = get_terms(
+		array(
+			'taxonomy'   => 'industry',
+			'hide_empty' => true,
+			'orderby'    => 'name',
+			'order'      => 'ASC',
 		)
 	);
+	$nuware_home_case_studies = array();
+	$nuware_home_case_ids     = array();
 
-	usort(
-		$nuware_stat_rows,
-		static function ( $nuware_stat_a, $nuware_stat_b ) {
-			return (float) $nuware_stat_a['value'] <=> (float) $nuware_stat_b['value'];
+	if ( ! is_wp_error( $nuware_case_study_terms ) ) {
+		foreach ( $nuware_case_study_terms as $nuware_case_study_term ) {
+			$nuware_term_query = array(
+				'post_type'      => 'case-studies',
+				'post_status'    => 'publish',
+				'posts_per_page' => 1,
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'industry',
+						'field'    => 'term_id',
+						'terms'    => $nuware_case_study_term->term_id,
+					),
+				),
+			);
+
+			if ( $nuware_home_case_ids ) {
+				$nuware_term_query['post__not_in'] = $nuware_home_case_ids;
+			}
+
+			$nuware_term_studies = get_posts( $nuware_term_query );
+
+			// A study may belong to several industries. Reuse it only when that is
+			// the sole way to ensure every industry is represented in the carousel.
+			if ( ! $nuware_term_studies && $nuware_home_case_ids ) {
+				unset( $nuware_term_query['post__not_in'] );
+				$nuware_term_studies = get_posts( $nuware_term_query );
+			}
+
+			if ( $nuware_term_studies ) {
+				$nuware_home_case_studies[] = $nuware_term_studies[0];
+				$nuware_home_case_ids[]     = $nuware_term_studies[0]->ID;
+			}
 		}
-	);
+	}
 	?>
 
-	<?php if ( $nuware_stat_rows ) : ?>
-		<?php $nuware_initial_stat = $nuware_stat_rows[0]; ?>
-		<section
-			class="stat-counter"
-			data-stat-counter
-			tabindex="0"
-			aria-roledescription="carousel"
-			aria-label="<?php esc_attr_e( 'NuWare statistics', 'nuware' ); ?>"
-		>
-			<script class="stat-counter__data" type="application/json"><?php echo wp_json_encode( $nuware_stat_rows, JSON_HEX_TAG | JSON_HEX_AMP ); ?></script>
-			<h2 class="stat-counter__title"><?php esc_html_e( 'NuWare in numbers.', 'nuware' ); ?></h2>
-			<div class="stat-counter__row">
-				<button class="stat-counter__button" type="button" data-stat-previous aria-label="<?php esc_attr_e( 'Show previous statistic', 'nuware' ); ?>">
-					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/stat-minus.svg' ); ?>" alt="" width="20" height="20">
-				</button>
-
-				<div class="stat-counter__stat" aria-live="polite" aria-atomic="true">
-					<p class="stat-counter__number">
-						<span class="stat-counter__value" data-stat-value><?php echo esc_html( str_pad( (string) $nuware_initial_stat['value'], 2, '0', STR_PAD_LEFT ) ); ?></span><span class="stat-counter__suffix" data-stat-suffix><?php echo esc_html( $nuware_initial_stat['suffix'] ?? '' ); ?></span>
-					</p>
-					<p class="stat-counter__description" data-stat-description><?php echo esc_html( $nuware_initial_stat['description'] ?? '' ); ?></p>
-					<a class="stat-counter__link" href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'Find Out More', 'nuware' ); ?></a>
+	<?php if ( $nuware_home_case_studies ) : ?>
+		<section class="homepage-case-studies" data-homepage-case-studies aria-labelledby="homepage-case-studies-title">
+			<div class="homepage-case-studies__inner">
+				<header class="homepage-case-studies__header">
+					<h2 id="homepage-case-studies-title"><?php esc_html_e( 'Case Studies', 'nuware' ); ?></h2>
+					<a class="homepage-case-studies__view-all" href="<?php echo esc_url( home_url( '/case-studies/' ) ); ?>"><?php esc_html_e( 'View All', 'nuware' ); ?> <span aria-hidden="true">→</span></a>
+				</header>
+				<div id="homepage-case-studies-track" class="homepage-case-studies__track" tabindex="0" aria-label="<?php esc_attr_e( 'Featured case studies', 'nuware' ); ?>">
+					<?php foreach ( $nuware_home_case_studies as $post ) : ?>
+						<?php setup_postdata( $post ); ?>
+						<?php get_template_part( 'template-parts/case-studies/card' ); ?>
+					<?php endforeach; ?>
+					<?php wp_reset_postdata(); ?>
 				</div>
-
-				<button class="stat-counter__button" type="button" data-stat-next aria-label="<?php esc_attr_e( 'Show next statistic', 'nuware' ); ?>">
-					<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/stat-plus.svg' ); ?>" alt="" width="20" height="20">
-				</button>
+				<div class="homepage-case-studies__controls">
+					<button type="button" data-home-case-previous aria-label="<?php esc_attr_e( 'Previous case study', 'nuware' ); ?>" aria-controls="homepage-case-studies-track">←</button>
+					<span data-home-case-position role="status" aria-live="polite"></span>
+					<button type="button" data-home-case-next aria-label="<?php esc_attr_e( 'Next case study', 'nuware' ); ?>" aria-controls="homepage-case-studies-track">→</button>
+				</div>
 			</div>
 		</section>
 	<?php endif; ?>
@@ -229,6 +253,23 @@
 			$nuware_world_pages = array_values( $nuware_world_pages );
 		}
 	}
+
+	$nuware_world_order = array(
+		'capital'    => 0,
+		'retail'     => 1,
+		'banking'    => 2,
+		'healthcare' => 3,
+	);
+
+	usort(
+		$nuware_world_pages,
+		static function ( $nuware_world_a, $nuware_world_b ) use ( $nuware_world_order ) {
+			$nuware_world_a_order = $nuware_world_order[ $nuware_world_a->post_name ] ?? PHP_INT_MAX;
+			$nuware_world_b_order = $nuware_world_order[ $nuware_world_b->post_name ] ?? PHP_INT_MAX;
+
+			return $nuware_world_a_order <=> $nuware_world_b_order;
+		}
+	);
 
 	$nuware_world_pages = array_slice( $nuware_world_pages, 0, 4 );
 	$nuware_first_paragraph = static function ( $nuware_content ) use ( &$nuware_first_paragraph ) {
@@ -303,12 +344,12 @@
 	<?php endif; ?>
 
 	<?php
-	// ACF field group: Quote Homepage. Use the same Homepage source as the counter.
-	$nuware_homepage_quote = function_exists( 'get_field' ) && $nuware_counter_page_id
-		? get_field( 'quote', $nuware_counter_page_id )
+	// ACF field group: Quote Homepage.
+	$nuware_homepage_quote = function_exists( 'get_field' ) && $nuware_homepage_page_id
+		? get_field( 'quote', $nuware_homepage_page_id )
 		: '';
-	$nuware_homepage_quote_author = function_exists( 'get_field' ) && $nuware_counter_page_id
-		? get_field( 'quote_author', $nuware_counter_page_id )
+	$nuware_homepage_quote_author = function_exists( 'get_field' ) && $nuware_homepage_page_id
+		? get_field( 'quote_author', $nuware_homepage_page_id )
 		: '';
 	?>
 

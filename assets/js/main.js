@@ -63,11 +63,15 @@ import('./modules/ai-carousel.js?v=35').then(({ initAiCarousel }) => {
   initAiCarousel();
 });
 
-import('./modules/stat-counter.js?v=2').then(({ initStatCounters }) => {
-  initStatCounters();
-});
+if (document.querySelector('[data-stat-counter]')) {
+  import('./modules/stat-counter.js?v=2').then(({ initStatCounters }) => initStatCounters());
+}
 
-import('./modules/our-worlds-carousel.js?v=5').then(({ initOurWorldsCarousels }) => {
+if (document.querySelector('[data-homepage-case-studies]')) {
+  import('./modules/homepage-case-studies.js?v=1').then(({ initHomepageCaseStudies }) => initHomepageCaseStudies());
+}
+
+import('./modules/our-worlds-carousel.js?v=6').then(({ initOurWorldsCarousels }) => {
   initOurWorldsCarousels();
 });
 

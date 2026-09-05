@@ -36,6 +36,8 @@ export const initOurWorldsCarousels = () => {
 
     let activeIndex = 0;
     const mobileQuery = window.matchMedia('(max-width: 47.99rem)');
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let autoAdvanceTimer;
 
     const showWorld = (nextIndex) => {
       activeIndex = (nextIndex + cards.length) % cards.length;
@@ -66,8 +68,32 @@ export const initOurWorldsCarousels = () => {
       });
     };
 
-    previousButton?.addEventListener('click', () => showWorld(activeIndex - 1));
-    nextButton?.addEventListener('click', () => showWorld(activeIndex + 1));
+    const stopAutoAdvance = () => {
+      window.clearTimeout(autoAdvanceTimer);
+    };
+
+    const scheduleAutoAdvance = () => {
+      stopAutoAdvance();
+      if (!mobileQuery.matches || reducedMotionQuery.matches || document.hidden) return;
+
+      autoAdvanceTimer = window.setTimeout(() => {
+        showWorld(activeIndex + 1);
+        scheduleAutoAdvance();
+      }, 3000);
+    };
+
+    const showPreviousWorld = () => {
+      showWorld(activeIndex - 1);
+      scheduleAutoAdvance();
+    };
+
+    const showNextWorld = () => {
+      showWorld(activeIndex + 1);
+      scheduleAutoAdvance();
+    };
+
+    previousButton?.addEventListener('click', showPreviousWorld);
+    nextButton?.addEventListener('click', showNextWorld);
 
     carousel.addEventListener('keydown', (event) => {
       if (!mobileQuery.matches) {
@@ -76,21 +102,33 @@ export const initOurWorldsCarousels = () => {
 
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        showWorld(activeIndex - 1);
+        showPreviousWorld();
       } else if (event.key === 'ArrowRight') {
         event.preventDefault();
-        showWorld(activeIndex + 1);
+        showNextWorld();
       }
     });
 
-    mobileQuery.addEventListener('change', () => showWorld(activeIndex));
+    mobileQuery.addEventListener('change', () => {
+      showWorld(activeIndex);
+      scheduleAutoAdvance();
+    });
+    reducedMotionQuery.addEventListener('change', scheduleAutoAdvance);
+    document.addEventListener('visibilitychange', scheduleAutoAdvance);
+    carousel.addEventListener('pointerdown', stopAutoAdvance);
+    carousel.addEventListener('pointerup', scheduleAutoAdvance);
+    carousel.addEventListener('pointercancel', scheduleAutoAdvance);
 
     const resizeObserver = new ResizeObserver(() => showWorld(activeIndex));
 
     resizeObserver.observe(carousel);
 
-    window.addEventListener('pagehide', () => resizeObserver.disconnect(), { once: true });
+    window.addEventListener('pagehide', () => {
+      stopAutoAdvance();
+      resizeObserver.disconnect();
+    }, { once: true });
 
     showWorld(0);
+    scheduleAutoAdvance();
   });
 };

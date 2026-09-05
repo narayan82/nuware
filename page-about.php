@@ -119,7 +119,7 @@ $render_technologies = static function ( $items ) {
 	</section>
 
 	<?php if ( $our_story ) : ?>
-		<section class="about-page__story" aria-labelledby="our-story-title" data-about-story>
+		<section class="about-page__story" id="our-story" aria-labelledby="our-story-title" data-about-story>
 			<div class="about-page__container">
 				<header class="about-page__story-header">
 					<h2 id="our-story-title" class="about-page__story-title">Our Story</h2>
