@@ -68,6 +68,7 @@ $nuware_terms_url   = home_url( '/terms/' );
 		</div>
 	</div>
 </footer>
+<?php get_template_part( 'template-parts/sections/cookie-notice' ); ?>
 <?php wp_footer(); ?>
 </body>
 </html>

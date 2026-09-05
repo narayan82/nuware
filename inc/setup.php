@@ -44,12 +44,27 @@ function nuware_favicon() {
  */
 function nuware_google_analytics_tag() {
 	?>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-P9PPMMJ2QQ"></script>
 	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-P9PPMMJ2QQ');
+		(function () {
+			let loaded = false;
+			function loadNuwareAnalytics() {
+				if (loaded) return;
+				loaded = true;
+				window.dataLayer = window.dataLayer || [];
+				window.gtag = function () { window.dataLayer.push(arguments); };
+				window.gtag('js', new Date());
+				window.gtag('config', 'G-P9PPMMJ2QQ');
+				const script = document.createElement('script');
+				script.async = true;
+				script.src = 'https://www.googletagmanager.com/gtag/js?id=G-P9PPMMJ2QQ';
+				document.head.appendChild(script);
+			}
+
+			try {
+				if (localStorage.getItem('nuware-cookie-consent') === 'accepted') loadNuwareAnalytics();
+			} catch (error) {}
+			window.addEventListener('nuware-cookie-consent', loadNuwareAnalytics, { once: true });
+		})();
 	</script>
 	<?php
 }

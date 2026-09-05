@@ -68,6 +68,7 @@ $nuware_terms_url   = home_url( '/terms/' );
 </footer>
 <?php get_template_part( 'template-parts/sections/contact-overlay' ); ?>
 <?php get_template_part( 'template-parts/sections/application-overlay' ); ?>
+<?php get_template_part( 'template-parts/sections/cookie-notice' ); ?>
 <?php wp_footer(); ?>
 </body>
 </html>
