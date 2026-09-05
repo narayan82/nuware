@@ -69,7 +69,7 @@
 			'title'       => __( 'Intelligence scales into action.', 'nuware' ),
 			'description' => __( 'We embed AI into products, workflows and operations—creating unique outcomes that can adapt, automate and scale.', 'nuware' ),
 			'link_label'  => __( 'Explore our AI capabilities →', 'nuware' ),
-			'link_url'    => '#', // Replace with the final destination URL.
+			'link_url'    => '/ai/advisory/', // Replace with the final destination URL.
 		),
 	);
 	?>
@@ -78,7 +78,7 @@
 		<div class="ai-carousel__background" id="ai-carousel-particles" data-ai-particles aria-hidden="true"></div>
 		<div class="ai-carousel__inner">
 			<header class="ai-carousel__intro">
-				<h2 class="ai-carousel__eyebrow"><?php esc_html_e( 'From AI to Action', 'nuware' ); ?></h2>
+				<h2 class="ai-carousel__eyebrow"><?php esc_html_e( 'From AI to Agentic Action', 'nuware' ); ?></h2>
 				<p class="ai-carousel__summary"><?php esc_html_e( 'We turn enterprise data into intelligence—and intelligence into outcomes that move the business forward.', 'nuware' ); ?></p>
 			</header>
 

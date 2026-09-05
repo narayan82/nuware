@@ -31,7 +31,7 @@ $nuware_terms_url = $nuware_terms_page instanceof WP_Post && 'publish' === $nuwa
 				</nav>
 				<div class="site-footer__office">
 					<h3 class="site-footer__office-title">NuWare Tech Corp</h3>
-					<address class="site-footer__address">Global Headquaters, 100 Wood Ave South, Suite 116, Iselin, New Jersey 08830-2716</address>
+					<address class="site-footer__address">Global Headquaters<br/> 100 Wood Ave South, Suite 116, Iselin, New Jersey 08830-2716</address>
 					<div class="site-footer__contact">
 						<p><strong><?php esc_html_e( 'Tel:', 'nuware' ); ?></strong> <a href="tel:+17324940550">(732) 494-0550</a></p>
 						<a class="site-footer__email" href="mailto:info@nuware.com">info@nuware.com</a>
@@ -42,8 +42,8 @@ $nuware_terms_url = $nuware_terms_page instanceof WP_Post && 'publish' === $nuwa
 			<div class="site-footer__column site-footer__column--india">
 				<div class="site-footer__office">
 					<h3 class="site-footer__office-title">NuWare Systems LLP</h3>
-					<address class="site-footer__address">2/2, 1st Floor, Embassy Icon, Annexe, Infantry Road, Opposite Coffee Board<br>Bangalore – 560001</address>
-					<address class="site-footer__address">1st Floor, 60, 1st Cross 4th Main, HAL III Stage, Bengaluru, Karnataka, India - 560075</address>
+					<address class="site-footer__address">Bengaluru Office I<br/>2/2, 1st Floor, Embassy Icon, Annexe, Infantry Road, Opposite Coffee Board<br>Bangalore – 560001</address>
+					<address class="site-footer__address">Bengaluru Office II<br/>1st Floor, 60, 1st Cross 4th Main, HAL III Stage, Bengaluru, Karnataka, India - 560075</address>
 					<div class="site-footer__contact">
 						<p><strong><?php esc_html_e( 'Tel:', 'nuware' ); ?></strong> <a href="tel:+918067166300">+91 - 80671 66300</a>/<a href="tel:+918067166301" aria-label="<?php esc_attr_e( 'Call +91 80671 66301', 'nuware' ); ?>">301</a></p>
 					</div>

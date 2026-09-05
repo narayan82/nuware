@@ -23,6 +23,10 @@ if (document.querySelector('[data-solutions-tabs]')) {
   import('./modules/solutions-page.js?v=7').then(({ initSolutionsPage }) => initSolutionsPage());
 }
 
+if (document.querySelector('[data-about-story]')) {
+  import('./modules/about-story.js?v=1').then(({ initAboutStory }) => initAboutStory());
+}
+
 if (document.querySelector('[data-careers-typing]')) {
   import('./modules/careers-typing.js?v=1').then(({ initCareersTyping }) => initCareersTyping());
 }

@@ -36,6 +36,8 @@ while ( have_posts() ) {
 
 $technologies = function_exists( 'get_field' ) ? get_field( 'technologies' ) : array();
 $technologies = is_array( $technologies ) ? $technologies : array();
+$our_story   = function_exists( 'get_field' ) ? get_field( 'our_story' ) : array();
+$our_story   = is_array( $our_story ) ? $our_story : array();
 $leadership   = function_exists( 'get_field' ) ? get_field( 'leadership' ) : array();
 $leadership   = is_array( $leadership ) ? $leadership : array();
 
@@ -117,6 +119,46 @@ $render_technologies = static function ( $items ) {
 		</div>
 	</section>
 
+	<?php if ( $our_story ) : ?>
+		<section class="about-page__story" aria-labelledby="our-story-title" data-about-story>
+			<div class="about-page__container">
+				<header class="about-page__story-header">
+					<h2 id="our-story-title" class="about-page__story-title">Our Story</h2>
+					<p class="about-page__story-intro">Three decades of adapting, evolving and building what comes next.</p>
+				</header>
+				<div class="about-page__story-slides" aria-live="polite">
+					<?php foreach ( $our_story as $story_index => $story ) : ?>
+						<?php
+						$story_year    = trim( (string) ( $story['year'] ?? '' ) );
+						$story_title   = trim( (string) ( $story['title'] ?? '' ) );
+						$story_caption = (string) ( $story['caption'] ?? '' );
+						$story_image   = $story['image'] ?? null;
+						$story_image_id = is_array( $story_image ) ? (int) ( $story_image['ID'] ?? $story_image['id'] ?? 0 ) : (int) $story_image;
+						?>
+						<article class="about-page__story-slide" data-story-slide <?php echo 0 !== $story_index ? 'hidden' : ''; ?>>
+							<?php if ( $story_image_id ) : ?>
+								<?php echo wp_get_attachment_image( $story_image_id, 'full', false, array( 'class' => 'about-page__story-image', 'alt' => $story_title, 'loading' => 0 === $story_index ? 'eager' : 'lazy' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php endif; ?>
+							<div class="about-page__story-overlay">
+								<?php if ( $story_title ) : ?><h3><?php echo esc_html( $story_title ); ?></h3><?php endif; ?>
+								<?php if ( $story_caption ) : ?><div><?php echo wp_kses_post( wpautop( $story_caption ) ); ?></div><?php endif; ?>
+							</div>
+						</article>
+					<?php endforeach; ?>
+				</div>
+				<div class="about-page__story-nav" aria-label="Our Story timeline">
+					<button type="button" class="about-page__story-arrow" data-story-prev aria-label="Previous story">←</button>
+					<div class="about-page__story-years">
+						<?php foreach ( $our_story as $story_index => $story ) : ?>
+							<button type="button" data-story-year aria-pressed="<?php echo 0 === $story_index ? 'true' : 'false'; ?>"><?php echo esc_html( $story['year'] ?? '' ); ?></button>
+						<?php endforeach; ?>
+					</div>
+					<button type="button" class="about-page__story-arrow" data-story-next aria-label="Next story">→</button>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
 	<?php if ( $leadership ) : ?>
 		<section class="about-page__leadership" aria-labelledby="leadership-title">
 			<div class="about-page__container">
@@ -133,6 +175,8 @@ $render_technologies = static function ( $items ) {
 							$designation = isset( $leader['designation'] ) ? trim( (string) $leader['designation'] ) : '';
 							$photo       = $leader['photo'] ?? null;
 							$photo_id    = is_array( $photo ) ? (int) ( $photo['ID'] ?? $photo['id'] ?? 0 ) : (int) $photo;
+							$linkedin    = $leader['linkedin'] ?? '';
+							$linkedin_url = is_array( $linkedin ) ? trim( (string) ( $linkedin['url'] ?? '' ) ) : trim( (string) $linkedin );
 
 							if ( '' === $name && '' === $designation && ! $photo_id ) {
 								continue;
@@ -154,14 +198,21 @@ $render_technologies = static function ( $items ) {
 										);
 										?>
 									<?php endif; ?>
+									<?php if ( $linkedin_url ) : ?>
+										<a class="about-page__leader-linkedin" href="<?php echo esc_url( $linkedin_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( sprintf( 'View %s on LinkedIn', $name ?: 'this leader' ) ); ?>">
+											<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about/linkedin.png' ); ?>" alt="" aria-hidden="true">
+										</a>
+									<?php endif; ?>
 								</div>
 								<div class="about-page__leader-details">
 									<?php if ( $name ) : ?>
 										<h3 class="about-page__leader-name"><?php echo esc_html( $name ); ?></h3>
 									<?php endif; ?>
-									<?php if ( $designation ) : ?>
-										<p class="about-page__leader-designation"><?php echo esc_html( $designation ); ?></p>
-									<?php endif; ?>
+									<div class="about-page__leader-meta">
+										<?php if ( $designation ) : ?>
+											<p class="about-page__leader-designation"><?php echo esc_html( $designation ); ?></p>
+										<?php endif; ?>
+									</div>
 								</div>
 							</article>
 						<?php endforeach; ?>
@@ -170,6 +221,22 @@ $render_technologies = static function ( $items ) {
 			</div>
 		</section>
 	<?php endif; ?>
+
+	<section class="about-page__brand-evolution" aria-labelledby="brand-evolution-title">
+		<div class="about-page__container">
+			<h2 id="brand-evolution-title" class="about-page__brand-evolution-title">Evolution of the NuWare Brand</h2>
+			<div class="about-page__brand-evolution-grid">
+				<?php foreach ( array( 1994 => 'png', 2006 => 'png', 2013 => 'png', 2019 => 'png', 2026 => 'jpg' ) as $brand_year => $brand_extension ) : ?>
+					<figure class="about-page__brand-card">
+						<div class="about-page__brand-logo-wrap">
+							<img class="about-page__brand-logo about-page__brand-logo--<?php echo esc_attr( $brand_year ); ?>" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about/brand-evolution/' . $brand_year . '_Logo.' . $brand_extension ); ?>" alt="NuWare logo from <?php echo esc_attr( $brand_year ); ?>" loading="lazy">
+						</div>
+						<figcaption><?php echo esc_html( $brand_year ); ?></figcaption>
+					</figure>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
 
 	<?php if ( $about_quote ) : ?>
 		<section class="about-page__quote" aria-label="NuWare quote">
