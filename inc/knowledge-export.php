@@ -92,9 +92,10 @@ function nuware_knowledge_hardcoded_documents() {
 			'section' => 'Contact',
 			'source'  => 'footer.php',
 			'content' => implode( "\n\n", array(
+				'Interested? Transform Your Business With Future-Ready Tech. Let’s collaborate.',
 				'NuWare Tech Corp. Global Headquarters: 100 Wood Ave South, Suite 116, Iselin, New Jersey 08830-2716. Telephone: (732) 494-0550. Email: info@nuware.com.',
-				'NuWare Systems LLP. Bengaluru Office I: 2/2, 1st Floor, Embassy Icon, Annexe, Infantry Road, Opposite Coffee Board, Bangalore – 560001.',
-				'NuWare Systems LLP. Bengaluru Office II: 1st Floor, 60, 1st Cross 4th Main, HAL III Stage, Bengaluru, Karnataka, India - 560075. Telephone: +91 80671 66300 / +91 80671 66301.',
+				'NuWare Systems LLP. Development Center: 2/2, 1st Floor, Embassy Icon, Annexe, Infantry Road, Opposite Coffee Board, Bangalore – 560001.',
+				'NuWare Systems LLP. Registered Office: 1st Floor, 60, 1st Cross 4th Main, HAL III Stage, Bengaluru, Karnataka, India - 560075. Telephone: +91 80671 66300 / +91 80671 66301.',
 			) ),
 		),
 	);
@@ -119,9 +120,6 @@ function nuware_build_knowledge_export() {
 			continue;
 		}
 		$content = nuware_knowledge_clean_text( $page->post_content );
-		if ( '' === $content ) {
-			continue;
-		}
 		$documents[] = array(
 			'type'    => 'page',
 			'title'   => get_the_title( $page ),
@@ -163,6 +161,7 @@ function nuware_build_knowledge_export() {
 		$field = static function ( $name ) use ( $position ) {
 			return function_exists( 'get_field' ) ? get_field( $name, $position->ID ) : get_post_meta( $position->ID, $name, true );
 		};
+		$description = nuware_knowledge_clean_text( $field( 'description' ) );
 		$documents[] = array(
 			'type'           => 'position',
 			'title'          => (string) ( $field( 'position_name' ) ?: get_the_title( $position ) ),
@@ -174,11 +173,16 @@ function nuware_build_knowledge_export() {
 			'min_experience' => $field( 'min_experience' ),
 			'max_experience' => $field( 'max_experience' ),
 			'location'       => (string) $field( 'location' ),
-			'content'        => nuware_knowledge_clean_text( $field( 'description' ) ),
+			'description'    => $description,
+			'content'        => $description,
 		);
 	}
 
-	$homepage = get_page_by_path( 'homepage' );
+	$homepage_id = (int) get_option( 'page_on_front' );
+	$homepage    = $homepage_id ? get_post( $homepage_id ) : get_page_by_path( 'homepage' );
+	if ( ! $homepage instanceof WP_Post || 'page' !== $homepage->post_type || 'publish' !== $homepage->post_status ) {
+		$homepage = get_page_by_path( 'homepage' );
+	}
 	if ( $homepage instanceof WP_Post && function_exists( 'get_field' ) ) {
 		$counters = array();
 		foreach ( (array) get_field( 'counter', $homepage->ID ) as $row ) {
@@ -301,6 +305,7 @@ function nuware_export_knowledge( $output_path = '' ) {
 		@unlink( $temporary );
 		return new WP_Error( 'knowledge_write', 'Could not write the knowledge export.' );
 	}
+	@chmod( $output_path, 0600 );
 
 	return array(
 		'path'      => $output_path,
