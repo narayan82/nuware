@@ -39,7 +39,7 @@ if (document.querySelector('[data-world-timeline-light]')) {
   import('./modules/world-timeline-light.js?v=6').then(({ initWorldTimelineLight }) => initWorldTimelineLight());
 }
 
-import('./modules/hero-answer.js?v=1').then(({ initHeroAnswer }) => initHeroAnswer());
+import('./modules/hero-answer.js?v=3').then(({ initHeroAnswer }) => initHeroAnswer());
 
 import('./modules/homepage-solutions.js?v=2').then(({ initHomepageSolutions }) => {
   initHomepageSolutions();

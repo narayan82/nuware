@@ -5861,13 +5861,12 @@ html.position-drawer-open {
   border-left: 1px solid var(--answer-border);
   background: var(--answer-bg);
   color: var(--answer-text);
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  overflow: hidden;
   transform: translateX(100%);
   transition: transform 300ms ease;
 }
 .hero-answer::backdrop {
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(6, 13, 30, 0.54);
   opacity: 0;
   transition: opacity 300ms ease;
 }
@@ -5878,11 +5877,12 @@ html.position-drawer-open {
   opacity: 1;
 }
 .hero-answer__inner {
+  position: relative;
   display: flex;
   height: 100%;
-  padding: 80px 28px max(32px, env(safe-area-inset-bottom));
+  padding: 80px 28px max(28px, env(safe-area-inset-bottom));
   flex-direction: column;
-  gap: 32px;
+  gap: 28px;
 }
 .hero-answer__content {
   min-height: 0;
@@ -5898,81 +5898,107 @@ html.position-drawer-open {
   height: 44px;
   padding: 10px;
   place-items: center;
-  border: 0;
-  border-radius: 16px;
+  border: 1px solid var(--answer-border);
+  border-radius: 50%;
   background: transparent;
-  color: inherit;
+  color: var(--answer-text);
   cursor: pointer;
 }
-.hero-answer__title {
-  margin: 0 0 24px;
-  font-size: 26px;
-  line-height: 1.2;
-}
-.hero-answer__question {
-  margin: 0 0 20px;
-  font-size: 18px;
-  font-weight: 600;
-  overflow-wrap: anywhere;
-}
-.hero-answer__notice {
-  margin: 0 0 12px;
-  font-size: 13px;
-  color: var(--answer-muted);
-}
-.hero-answer__text {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.65;
-}
-.hero-answer__invitation {
-  margin-top: auto;
-  flex-shrink: 0;
-}
-.hero-answer__invitation-title {
-  margin: 0 0 18px;
-  color: #df1e26;
-  font-size: 44px;
-  line-height: 1.1;
-}
-.hero-answer__tagline {
-  margin: 0 0 28px;
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 1.35;
-}
-.hero-answer__cta {
-  display: inline-flex;
-  padding: 16px 20px;
-  align-items: center;
-  gap: 16px;
-  border-radius: 16px;
-  background: var(--answer-text);
-  color: var(--answer-bg);
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 700;
+.hero-answer__close:disabled {
+  cursor: wait;
+  opacity: 0.45;
 }
 .hero-answer__close:focus-visible, .hero-answer__cta:focus-visible {
   outline: 2px solid #df1e26;
   outline-offset: 3px;
 }
+.hero-answer__status, .hero-answer__question, .hero-answer__text, .hero-answer__remaining, .hero-answer__limit-text {
+  margin: 0;
+}
+.hero-answer__status {
+  color: var(--answer-muted);
+  font-size: 15px;
+}
+.hero-answer__status--error {
+  color: #b42318;
+}
+.hero-answer__question {
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.hero-answer__text {
+  font-size: 16px;
+  line-height: 1.65;
+}
+.hero-answer__remaining {
+  margin-top: 20px;
+  color: var(--answer-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+.hero-answer__limit {
+  display: flex;
+  margin-top: auto;
+  padding-top: 24px;
+  flex-shrink: 0;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 18px;
+  border-top: 1px solid var(--answer-border);
+}
+.hero-answer__limit[hidden] {
+  display: none;
+}
+.hero-answer__limit-text {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.hero-answer__cta {
+  display: inline-flex;
+  padding: 13px 18px;
+  align-items: center;
+  gap: 12px;
+  border-radius: 18px;
+  background: var(--answer-text);
+  color: var(--answer-bg);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+}
 
 .theme-dark .hero-answer {
-  --answer-bg: #080c14;
+  --answer-bg: #101728;
   --answer-text: #f7f8fb;
-  --answer-muted: #b3bbc7;
-  --answer-border: rgb(255 255 255 / 14%);
+  --answer-muted: #adb5c3;
+  --answer-border: rgba(255, 255, 255, 0.16);
 }
 
 html.hero-answer-open {
   overflow: hidden;
 }
 
+.particle-hero__input:disabled {
+  cursor: not-allowed;
+  opacity: 0.62;
+}
+
+.particle-hero__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 @media (max-width: 47.99rem) {
   .hero-answer {
     width: 100vw;
+    border-left: 0;
+  }
+  .hero-answer__inner {
+    padding-inline: 22px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

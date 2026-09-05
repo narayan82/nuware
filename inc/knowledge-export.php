@@ -23,6 +23,7 @@ function nuware_knowledge_clean_text( $content ) {
 		$content
 	);
 	$content = preg_replace( '/<li\b[^>]*>/i', "\n- ", $content );
+	$content = preg_replace( '/<\/(?:th|td)>/i', ' | ', $content );
 	$content = preg_replace( '/<br\s*\/?\s*>/i', "\n", $content );
 	$content = preg_replace( '/<\/(?:p|h[1-6]|li|ul|ol|blockquote|section|article|div|figure|figcaption|table|tr)>/i', "\n", $content );
 	$content = wp_strip_all_tags( $content );
@@ -32,6 +33,96 @@ function nuware_knowledge_clean_text( $content ) {
 	$content = preg_replace( '/\n{3,}/', "\n\n", $content );
 
 	return trim( $content );
+}
+
+/**
+ * Return the canonical public URL used in exported links.
+ */
+function nuware_knowledge_production_url() {
+	if ( defined( 'NUWARE_PRODUCTION_URL' ) && NUWARE_PRODUCTION_URL ) {
+		$production_url = NUWARE_PRODUCTION_URL;
+	} else {
+		$current_url = untrailingslashit( home_url() );
+		$current_host = (string) wp_parse_url( $current_url, PHP_URL_HOST );
+		$production_url = $current_host && ! str_ends_with( $current_host, '.local' ) && ! in_array( $current_host, array( 'localhost', '127.0.0.1' ), true )
+			? $current_url
+			: 'https://www.nuware.com';
+	}
+
+	return untrailingslashit( (string) apply_filters( 'nuware_knowledge_production_url', $production_url ) );
+}
+
+/**
+ * Normalize one exported string without changing its editorial wording.
+ */
+function nuware_knowledge_normalize_string( $value, &$local_urls_replaced ) {
+	for ( $iteration = 0; $iteration < 3; $iteration++ ) {
+		$decoded = html_entity_decode( $value, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+		if ( $decoded === $value ) {
+			break;
+		}
+		$value = $decoded;
+	}
+
+	$value = preg_replace_callback(
+		'#https?://(?:www\.)?nuware\.local(?=/|$)#i',
+		static function () use ( &$local_urls_replaced ) {
+			++$local_urls_replaced;
+			return nuware_knowledge_production_url();
+		},
+		$value
+	);
+	$value = str_replace( array( "\r\n", "\r", "\u{00A0}" ), array( "\n", "\n", ' ' ), $value );
+	$value = preg_replace( '/[ \t]+$/m', '', $value );
+	$value = preg_replace( '/[ \t]*\|[ \t]*/', ' | ', $value );
+	$value = preg_replace( '/(?: \|)+$/m', '', $value );
+	$value = preg_replace( '/\n{3,}/', "\n\n", $value );
+
+	return trim( $value );
+}
+
+/**
+ * Remove only byte-for-byte duplicate passages from one text value.
+ */
+function nuware_knowledge_remove_duplicate_passages( $value, &$duplicates_removed ) {
+	if ( ! str_contains( $value, "\n\n" ) ) {
+		return $value;
+	}
+
+	$passages = preg_split( '/\n{2,}/u', $value );
+	$seen     = array();
+	$unique   = array();
+
+	foreach ( $passages as $passage ) {
+		if ( isset( $seen[ $passage ] ) ) {
+			++$duplicates_removed;
+			continue;
+		}
+
+		$seen[ $passage ] = true;
+		$unique[]         = $passage;
+	}
+
+	return implode( "\n\n", $unique );
+}
+
+/**
+ * Apply URL and text cleanup recursively while preserving the export schema.
+ */
+function nuware_knowledge_normalize_value( $value, &$cleanup_stats ) {
+	if ( is_array( $value ) ) {
+		foreach ( $value as $key => $child ) {
+			$value[ $key ] = nuware_knowledge_normalize_value( $child, $cleanup_stats );
+		}
+		return $value;
+	}
+
+	if ( ! is_string( $value ) ) {
+		return $value;
+	}
+
+	$value = nuware_knowledge_normalize_string( $value, $cleanup_stats['local_urls_replaced'] );
+	return nuware_knowledge_remove_duplicate_passages( $value, $cleanup_stats['duplicates_removed'] );
 }
 
 /**
@@ -104,7 +195,7 @@ function nuware_knowledge_hardcoded_documents() {
 /**
  * Build the complete knowledge export in memory.
  */
-function nuware_build_knowledge_export() {
+function nuware_build_knowledge_export( &$cleanup_stats = null ) {
 	$documents = array();
 	$excluded_page_slugs = array( 'sample-page', 'backup-home' );
 	$pages = get_posts( array(
@@ -276,6 +367,11 @@ function nuware_build_knowledge_export() {
 	}
 
 	$documents = array_merge( $documents, nuware_knowledge_hardcoded_documents() );
+	$cleanup_stats = array(
+		'duplicates_removed' => 0,
+		'local_urls_replaced' => 0,
+	);
+	$documents = nuware_knowledge_normalize_value( $documents, $cleanup_stats );
 
 	return array(
 		'generated_at' => gmdate( 'c' ),
@@ -294,7 +390,8 @@ function nuware_export_knowledge( $output_path = '' ) {
 		return new WP_Error( 'knowledge_directory', 'Could not create the private knowledge directory.' );
 	}
 
-	$export = nuware_build_knowledge_export();
+	$cleanup_stats = array();
+	$export = nuware_build_knowledge_export( $cleanup_stats );
 	$json   = wp_json_encode( $export, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 	if ( false === $json ) {
 		return new WP_Error( 'knowledge_json', 'Could not encode the knowledge export.' );
@@ -308,9 +405,11 @@ function nuware_export_knowledge( $output_path = '' ) {
 	@chmod( $output_path, 0600 );
 
 	return array(
-		'path'      => $output_path,
-		'documents' => count( $export['documents'] ),
-		'bytes'     => filesize( $output_path ),
+		'path'                => $output_path,
+		'documents'           => count( $export['documents'] ),
+		'bytes'               => filesize( $output_path ),
+		'duplicates_removed'  => $cleanup_stats['duplicates_removed'],
+		'local_urls_replaced' => $cleanup_stats['local_urls_replaced'],
 	);
 }
 
@@ -322,7 +421,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			if ( is_wp_error( $result ) ) {
 				WP_CLI::error( $result->get_error_message() );
 			}
-			WP_CLI::success( sprintf( 'Exported %d documents to %s (%d bytes).', $result['documents'], $result['path'], $result['bytes'] ) );
+			WP_CLI::success( sprintf( 'Exported %d documents to %s (%d bytes); removed %d duplicate passages and replaced %d local URLs.', $result['documents'], $result['path'], $result['bytes'], $result['duplicates_removed'], $result['local_urls_replaced'] ) );
 		}
 	);
 }

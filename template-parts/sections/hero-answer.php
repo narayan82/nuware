@@ -1,5 +1,5 @@
 <?php
-/** Placeholder answer drawer; no AI service is connected yet. */
+/** Live homepage AI answer drawer. */
 $nuware_answer_contact_url = 'mailto:info@nuware.com';
 foreach ( array( 'contact', 'contact-us', 'get-in-touch' ) as $nuware_answer_slug ) {
 	$nuware_answer_page = get_page_by_path( $nuware_answer_slug );
@@ -14,15 +14,15 @@ foreach ( array( 'contact', 'contact-us', 'get-in-touch' ) as $nuware_answer_slu
 		<button class="hero-answer__close" type="button" aria-label="<?php esc_attr_e( 'Close answer', 'nuware' ); ?>" data-hero-answer-close autofocus>
 			<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
 		</button>
-		<div class="hero-answer__content">
+		<div class="hero-answer__content" aria-live="polite" aria-atomic="true" data-hero-answer-live>
+			<p class="hero-answer__status" data-hero-answer-status></p>
 			<p class="hero-answer__question" data-hero-answer-question hidden></p>
-			<p class="hero-answer__notice"><?php esc_html_e( 'Preview answer — AI integration coming soon.', 'nuware' ); ?></p>
-			<p class="hero-answer__text"><?php esc_html_e( 'NuWare can help you turn your technology challenges into practical business outcomes. We start by understanding your existing systems, data and priorities, then work with your team to shape a clear plan across applications, cloud, data and infrastructure. From modernising core platforms to building new digital capabilities, our focus is on secure, scalable solutions that support your next stage of growth.', 'nuware' ); ?></p>
+			<p class="hero-answer__text" data-hero-answer-text hidden></p>
+			<p class="hero-answer__remaining" data-hero-answer-remaining hidden></p>
 		</div>
-		<div class="hero-answer__invitation">
-			<h2 class="hero-answer__invitation-title"><?php esc_html_e( 'Interested?', 'nuware' ); ?></h2>
-			<p class="hero-answer__tagline"><?php esc_html_e( 'Transform Your Business With Future-Ready Tech', 'nuware' ); ?></p>
-			<a class="hero-answer__cta" href="<?php echo esc_url( $nuware_answer_contact_url ); ?>"><?php esc_html_e( 'Let’s collaborate', 'nuware' ); ?> <span aria-hidden="true">→</span></a>
+		<div class="hero-answer__limit" data-hero-answer-limit hidden>
+			<p class="hero-answer__limit-text"><?php esc_html_e( 'You’ve reached today’s question limit. Please check back tomorrow.', 'nuware' ); ?></p>
+			<a class="hero-answer__cta" href="<?php echo esc_url( $nuware_answer_contact_url ); ?>" data-contact-trigger><?php esc_html_e( 'Talk to NuWare', 'nuware' ); ?> <span aria-hidden="true">→</span></a>
 		</div>
 	</div>
 </dialog>

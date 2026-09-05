@@ -11,13 +11,15 @@
 			<p class="particle-hero__description"><?php esc_html_e( 'From Assembler to AI, technology has changed dramatically. The fundamentals haven’t: logic, data, systems and sound engineering. That’s where NuWare’s strength has always been.', 'nuware' ); ?></p>
 			<div class="particle-hero__prompt">
 				<p class="particle-hero__question"><?php esc_html_e( 'What can we do for your business?', 'nuware' ); ?></p>
-				<form class="particle-hero__form" action="" method="get">
+				<form class="particle-hero__form" action="" method="post" data-hero-answer-form>
 					<label class="particle-hero__label" for="nuware-particle-ai-question"><?php esc_html_e( 'Ask NuWare AI a question', 'nuware' ); ?></label>
 					<input
 						class="particle-hero__input"
 						id="nuware-particle-ai-question"
 						name="nuware-ai-question"
 						type="text"
+						maxlength="500"
+						required
 						placeholder="<?php esc_attr_e( 'E.g Can you help us move from on-prem to cloud?', 'nuware' ); ?>"
 					>
 					<button class="particle-hero__submit" type="submit" aria-label="<?php esc_attr_e( 'Send question', 'nuware' ); ?>">

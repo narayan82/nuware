@@ -51,5 +51,16 @@ function nuware_enqueue_assets() {
 		file_exists( $js_path ) ? (string) filemtime( $js_path ) : $theme_version,
 		true
 	);
+
+	if ( is_front_page() ) {
+		wp_localize_script(
+			'nuware-main',
+			'nuwareAi',
+			array(
+				'endpoint' => esc_url_raw( rest_url( 'nuware/v1/ask' ) ),
+				'nonce'    => wp_create_nonce( 'wp_rest' ),
+			)
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'nuware_enqueue_assets' );
