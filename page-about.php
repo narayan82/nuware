@@ -58,9 +58,8 @@ $render_technologies = static function ( $items ) {
 			<a
 				class="about-page__technology about-page__technology--linked"
 				href="<?php echo esc_url( $link_url ); ?>"
-				target="_blank"
-				<?php if ( $link_target ) : ?>target="<?php echo esc_attr( $link_target ); ?>"<?php endif; ?>
-				<?php if ( '_blank' === $link_target ) : ?>rel="noopener noreferrer"<?php endif; ?>
+				target="<?php echo esc_attr( $link_target ?: '_blank' ); ?>"
+				<?php if ( ! $link_target || '_blank' === $link_target ) : ?>rel="noopener noreferrer"<?php endif; ?>
 			>
 		<?php else : ?>
 			<div class="about-page__technology">
@@ -200,7 +199,7 @@ $render_technologies = static function ( $items ) {
 									<?php endif; ?>
 									<?php if ( $linkedin_url ) : ?>
 										<a class="about-page__leader-linkedin" href="<?php echo esc_url( $linkedin_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( sprintf( 'View %s on LinkedIn', $name ?: 'this leader' ) ); ?>">
-											<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about/linkedin.png' ); ?>" alt="" aria-hidden="true">
+											<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about/linkedin.png' ); ?>" alt="" width="128" height="128" aria-hidden="true">
 										</a>
 									<?php endif; ?>
 								</div>
@@ -226,10 +225,19 @@ $render_technologies = static function ( $items ) {
 		<div class="about-page__container">
 			<h2 id="brand-evolution-title" class="about-page__brand-evolution-title">Evolution of the NuWare Brand</h2>
 			<div class="about-page__brand-evolution-grid">
-				<?php foreach ( array( 1994 => 'png', 2006 => 'png', 2013 => 'png', 2019 => 'png', 2026 => 'jpg' ) as $brand_year => $brand_extension ) : ?>
+				<?php
+				$brand_logos = array(
+					1994 => array( 'extension' => 'png', 'width' => 971, 'height' => 346 ),
+					2006 => array( 'extension' => 'png', 'width' => 366, 'height' => 94 ),
+					2013 => array( 'extension' => 'png', 'width' => 459, 'height' => 106 ),
+					2019 => array( 'extension' => 'png', 'width' => 1754, 'height' => 1241 ),
+					2026 => array( 'extension' => 'jpg', 'width' => 3509, 'height' => 2482 ),
+				);
+				foreach ( $brand_logos as $brand_year => $brand_logo ) :
+				?>
 					<figure class="about-page__brand-card">
 						<div class="about-page__brand-logo-wrap">
-							<img class="about-page__brand-logo about-page__brand-logo--<?php echo esc_attr( $brand_year ); ?>" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about/brand-evolution/' . $brand_year . '_Logo.' . $brand_extension ); ?>" alt="NuWare logo from <?php echo esc_attr( $brand_year ); ?>" loading="lazy">
+							<img class="about-page__brand-logo about-page__brand-logo--<?php echo esc_attr( $brand_year ); ?>" src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/about/brand-evolution/' . $brand_year . '_Logo.' . $brand_logo['extension'] ); ?>" alt="NuWare logo from <?php echo esc_attr( $brand_year ); ?>" width="<?php echo esc_attr( $brand_logo['width'] ); ?>" height="<?php echo esc_attr( $brand_logo['height'] ); ?>" loading="lazy">
 						</div>
 						<figcaption><?php echo esc_html( $brand_year ); ?></figcaption>
 					</figure>

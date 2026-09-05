@@ -9,9 +9,12 @@ if ( 'industries' === $nuware_page_parent_slug ) {
 
 get_header();
 ?>
-
 <main id="primary" class="site-main">
-	<h1><?php esc_html_e( 'Page', 'nuware' ); ?></h1>
+	<?php while ( have_posts() ) : the_post(); ?>
+		<article <?php post_class( 'container' ); ?>>
+			<h1><?php the_title(); ?></h1>
+			<div class="entry-content"><?php the_content(); ?></div>
+		</article>
+	<?php endwhile; ?>
 </main>
-
 <?php get_footer(); ?>

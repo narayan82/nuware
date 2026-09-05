@@ -53,8 +53,16 @@
 
 				return $classes;
 			};
+			$nuware_primary_menu_attributes = static function ( $attributes, $menu_item, $args ) {
+				if ( isset( $args->theme_location ) && 'primary' === $args->theme_location && '_blank' === ( $attributes['target'] ?? '' ) ) {
+					$attributes['rel'] = trim( ( $attributes['rel'] ?? '' ) . ' noopener noreferrer' );
+				}
+
+				return $attributes;
+			};
 
 			add_filter( 'nav_menu_css_class', $nuware_primary_menu_classes, 10, 3 );
+			add_filter( 'nav_menu_link_attributes', $nuware_primary_menu_attributes, 10, 3 );
 
 			wp_nav_menu(
 				array(
@@ -68,6 +76,7 @@
 			);
 
 			remove_filter( 'nav_menu_css_class', $nuware_primary_menu_classes, 10 );
+			remove_filter( 'nav_menu_link_attributes', $nuware_primary_menu_attributes, 10 );
 			?>
 		</nav>
 

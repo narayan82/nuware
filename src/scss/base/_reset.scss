@@ -7,6 +7,7 @@
 
 html {
   text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body,
@@ -42,4 +43,97 @@ select {
 
 button {
   border-radius: 16px;
+}
+
+// Provide a usable layout for core fallback and error templates.
+.site-main > .container,
+.site-main > article.container,
+.error-404 .container {
+  width: min(1080px, calc(100% - 80px));
+  margin-inline: auto;
+  padding-block: 72px;
+}
+
+.error-404 {
+  min-height: 55vh;
+  background: var(--color-surface);
+  color: var(--color-text);
+
+  h1 { margin: 0 0 16px; font-size: clamp(36px, 5vw, 64px); }
+  p { margin: 0 0 28px; }
+  a { color: #df1e26; font-weight: 600; }
+}
+
+.theme-dark .error-404 {
+  background: #111318;
+  color: #f7f8fb;
+}
+
+.standard-content-page {
+  min-height: 55vh;
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+.standard-content-page__inner {
+  width: min(760px, calc(100% - 80px));
+  margin-inline: auto;
+  padding-block: 80px 96px;
+}
+
+.standard-content-page__title {
+  margin-bottom: 40px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.08;
+}
+
+.standard-content-page__body {
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.standard-content-page__body > * + * {
+  margin-top: 1.25em;
+}
+
+.standard-content-page__body :is(h2, h3, h4) {
+  margin-top: 1.8em;
+  line-height: 1.25;
+}
+
+.standard-content-page__body :is(ul, ol) {
+  padding-left: 1.4em;
+}
+
+.standard-content-page__body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.standard-content-page__body img {
+  height: auto;
+}
+
+.theme-dark .standard-content-page {
+  background: #111318;
+  color: #f7f8fb;
+}
+
+@media (max-width: 47.99rem) {
+  .site-main > .container,
+  .site-main > article.container,
+  .error-404 .container {
+    width: calc(100% - 40px);
+    padding-block: 48px;
+  }
+
+  .standard-content-page__inner {
+    width: min(100% - 40px, 760px);
+    padding-block: 48px 64px;
+  }
+
+  .standard-content-page__title {
+    margin-bottom: 28px;
+  }
 }
